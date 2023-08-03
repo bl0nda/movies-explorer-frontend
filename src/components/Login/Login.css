@@ -1,0 +1,56 @@
+.form-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-welcome__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+  padding: 60px 0 50px;
+}
+
+.form-welcome__input-container {
+  position: relative;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.form-welcome__input {
+  width: 358px;
+  height: 27px;
+  border: none;
+  border-bottom: 2px solid #cccccc;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #cccccc;
+  background: #000000;
+}
+
+.form-welcome__link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.form-welcome__link-text {
+  font-size: 14px;
+  line-height: 1.21;
+}
+
+.form-welcome__button {
+  width: 358px;
+  min-height: 50px;
+  margin: 216px 0 15px;
+  background-color: #ffffff;
+  color: black;
+  font-size: 18px;
+  line-height: 1.22;
+  transition: opacity ease-in-out;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+}

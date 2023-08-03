@@ -6,8 +6,10 @@
 .about-me__header-text {
   font-size: 22px;
   line-height: normal;
+  font-weight: 400;
   letter-spacing: -0.88px;
   padding-bottom: 23px;
+  margin: 0;
 }
 
 .about-me__note {
@@ -27,6 +29,7 @@
     grid-area: name;
     font-size: 50px;
     line-height: 1.16;
+    font-weight: 400;
     letter-spacing: -2px;
     margin: 0;
 }

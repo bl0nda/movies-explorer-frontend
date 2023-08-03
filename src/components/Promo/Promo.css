@@ -1,0 +1,50 @@
+.promo {
+  background-color: #465dff;
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+}
+
+.promo__container {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "title logo"
+    "subtitle logo";
+}
+
+.promo__title {
+  grid-area: title;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.16;
+  margin: 0;
+  padding-bottom: 36px;
+}
+
+.promo__subtitle {
+  grid-area: subtitle;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.5;
+  margin: 0;
+}
+
+.promo__logo {
+  width: 310px;
+  height: 304px;
+  background-image: url(../../images/promo-logo.svg);
+}
+
+.promo__btn {
+  width: 129px;
+  height: 36px;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  opacity: 0.6;
+  align-self: flex-end;
+}
