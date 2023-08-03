@@ -1,0 +1,65 @@
+.about-me__header {
+  margin: 110px 0 66px;
+  border-bottom: 1px solid black;
+}
+
+.about-me__header-text {
+  font-size: 22px;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  padding-bottom: 23px;
+}
+
+.about-me__note {
+  max-height: 327px;
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  grid-template-rows: 58px 20px 150px 1fr;
+  gap: 18px;
+  grid-template-areas:
+    "name avatar"
+    "about avatar"
+    "description avatar"
+    "link avatar";
+}
+
+.about-me__name {
+    grid-area: name;
+    font-size: 50px;
+    line-height: 1.16;
+    letter-spacing: -2px;
+    margin: 0;
+}
+
+.about-me__job {
+    grid-area: about;
+    font-size: 18px;
+    line-height: 1.11;
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+.about-me__description {
+    grid-area: description;
+    font-size: 14px;
+    line-height: 1.57;
+    max-width: 600px;
+    margin: 0;
+}
+
+.about-me__link {
+    grid-area: link;
+    font-size: 14px;
+    line-height: normal;
+    font-weight: 500;
+    margin: 0;
+    align-self: flex-end;
+    /* padding: 99px 0 0; */
+}
+
+.about-me__avatar {
+    grid-area: avatar;
+    max-width: 270px;
+    min-height: 327px;
+    border-radius: 10px;
+}
