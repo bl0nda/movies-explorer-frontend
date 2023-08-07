@@ -1,0 +1,51 @@
+.movie {
+  max-width: 364px;
+  min-height: 271px;
+}
+
+.movie__header {
+  max-width: 100%;
+  min-height: 68px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie__description {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.movie__title {
+  padding: 14px auto 0 14px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.movie__subtitle {
+  color: #a0a0a0;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0 auto 14px 14px;
+}
+
+.movie__save-button {
+  width: 30px;
+  height: 30px;
+  background-image: url(../../images/save9d.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.movie__save-button_active {
+  background-image: url(../../images/save9_active.svg);
+}
+
+.movie__thumbnail {
+    max-width: 100%;
+    min-height: 203px;
+    object-fit: cover;
+}

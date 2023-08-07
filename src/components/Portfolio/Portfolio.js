@@ -1,4 +1,5 @@
 import './Portfolio.css';
+import { Link } from "react-router-dom";
 
 function Portfolio() {
     return (
@@ -15,6 +16,7 @@ function Portfolio() {
                         <div className='portfolio__link-icon'></div>
                     </li>
                     <li className='portfolio__link'>
+
                         <h3 className='portfolio__link-title'>Одностраничное приложение</h3>
                         <div className='portfolio__link-icon'></div>
                     </li>

@@ -1,38 +1,42 @@
 .footer {
+  max-width: calc(100% - 70px * 2);
+  margin: 0 auto;
   min-height: 172px;
   display: flex;
   flex-direction: column;
 }
 
 .footer__bottom-container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer__text {
-    color: #A0A0A0;
-    text-align: center;
-    font-size: 13px;
-    line-height: normal;
-    font-weight: normal;
-    margin: 79px auto 41px;
+  color: #a0a0a0;
+  text-align: center;
+  font-size: 13px;
+  line-height: normal;
+  font-weight: normal;
+  margin: 79px auto 41px;
 }
 
 .footer__year {
-    font-size: 13px;
-    line-height: normal;
-    margin: 0 0 20px;
+  font-size: 13px;
+  line-height: normal;
+  margin: 0 0 20px;
 }
 
 .footer__links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px;
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
 }
 
 .footer__link {
-    font-size: 13px;
-    line-height: normal;
+  font-size: 13px;
+  line-height: normal;
+  text-decoration: none;
+  color: #000;
 }

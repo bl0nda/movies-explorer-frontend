@@ -1,3 +1,8 @@
+.about-project {
+  max-width: calc(100% - 70px*2);
+  margin: 0 auto;
+}
+
 .about-project__header {
   margin: 110px 0 70px;
   border-bottom: 1px solid black;

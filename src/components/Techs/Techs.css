@@ -1,3 +1,8 @@
+.techs {
+  max-width: calc(100% - 70px*2);
+  margin: 0 auto;
+}
+
 .techs__header {
   margin: 100px 0 90px;
   border-bottom: 1px solid black;

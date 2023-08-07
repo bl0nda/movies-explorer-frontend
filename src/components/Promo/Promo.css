@@ -1,17 +1,19 @@
 .promo {
   background-color: #465dff;
-  display: flex;
-  flex-direction: column;
-  max-width: 1280px;
 }
 
 .promo__container {
-  display: grid;
-  grid-template-columns: 1fr 310px;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-areas:
-    "title logo"
-    "subtitle logo";
+  max-width: calc(100% - 70px * 2);
+  margin: 0 auto;
+  padding: 75px 0;
+  display: flex;
+}
+
+.promo__description {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+  padding-right: 190px;
 }
 
 .promo__title {
@@ -32,6 +34,8 @@
   line-height: normal;
   opacity: 0.5;
   margin: 0;
+  padding-bottom: 146px;
+  max-width: 310px;
 }
 
 .promo__logo {
@@ -44,7 +48,11 @@
   width: 129px;
   height: 36px;
   border-radius: 3px;
-  border: 1px solid #fff;
-  opacity: 0.6;
-  align-self: flex-end;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: transparent;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.33;
 }

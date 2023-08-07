@@ -1,3 +1,8 @@
+.about-me {
+  max-width: calc(100% - 70px*2);
+  margin: 0 auto;
+}
+
 .about-me__header {
   margin: 110px 0 66px;
   border-bottom: 1px solid black;
@@ -57,6 +62,8 @@
     font-weight: 500;
     margin: 0;
     align-self: flex-end;
+    text-decoration: none;
+    color: #000;
     /* padding: 99px 0 0; */
 }
 

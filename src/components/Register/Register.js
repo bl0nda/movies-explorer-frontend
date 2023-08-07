@@ -1,10 +1,11 @@
+import './Register.css';
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import * as auth from "../utils/auth";
 
 export function Register({handleRegister}) {
   const [formValue, setFormValue] = useState({
-    email: "",
+    name: "Виталий",
+    email: "pochta@yandex.ru",
     password: "",
   });
 
@@ -18,25 +19,32 @@ export function Register({handleRegister}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegister(formValue.email, formValue.password);
+    handleRegister(formValue.name, formValue.email, formValue.password);
   };
 
   return (
     <main className="main">
       <form className="form-welcome" onSubmit={handleSubmit}>
-        <h2 className="form-welcome__title">Регистрация</h2>
-        <label className="form-welcome__input-container">
+        <h2 className="form-welcome__title">Добро пожаловать!</h2>
+        <label className="form-welcome__input-label">Имя</label>
+          <input
+            type="name"
+            className="form-welcome__input form-welcome__input_type_name"
+            name="name"
+            value={formValue.name}
+            onChange={handleChange}
+            required
+          ></input>
+        <label className="form-welcome__input-label">E-mail</label>
           <input
             type="email"
             className="form-welcome__input form-welcome__input_type_email"
             name="email"
-            placeholder="Email"
             value={formValue.email}
             onChange={handleChange}
             required
           ></input>
-        </label>
-        <label className="form-welcome__input-container">
+        <label className="form-welcome__input-label">Пароль</label>
           <input
             type="password"
             className="form-welcome__input form-welcome__input_type_password"
@@ -46,7 +54,7 @@ export function Register({handleRegister}) {
             onChange={handleChange}
             required
           ></input>
-        </label>
+          <span className='form-welcome__error'>Что-то пошло не так...</span>
         <button type="submit" className="form-welcome__button">
           Зарегистрироваться
         </button>
