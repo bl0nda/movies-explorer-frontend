@@ -1,6 +1,8 @@
 .movie {
   max-width: 364px;
   min-height: 271px;
+  position: relative;
+  overflow: hidden;
 }
 
 .movie__header {
@@ -17,27 +19,34 @@
 }
 
 .movie__title {
-  padding: 14px auto 0 14px;
+  padding: 14px 0 0 14px;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  margin: 0;
+  color: black;
 }
 
-.movie__subtitle {
+.movie__duration {
   color: #a0a0a0;
   font-size: 11px;
   font-weight: 400;
   line-height: normal;
-  padding: 0 auto 14px 14px;
+  padding: 0 0 14px 14px;
+  margin: 0;
 }
 
 .movie__save-button {
   width: 30px;
   height: 30px;
-  background-image: url(../../images/save9d.svg);
   background-repeat: no-repeat;
   background-size: cover;
+  border: none;
+}
+
+.movie__save-button_inactive {
+  background-image: url(../../images/save9d.svg);
 }
 
 .movie__save-button_active {
@@ -45,7 +54,7 @@
 }
 
 .movie__thumbnail {
-    max-width: 100%;
+    max-width: 364px;
     min-height: 203px;
     object-fit: cover;
 }

@@ -6,20 +6,24 @@ import { Login } from '../Login/Login';
 import { Register } from '../Register/Register';
 import { Profile } from '../Profile/Profile';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 import Page404 from '../Page404/Page404';
+import Preloader from '../Preloader/Preloader';
 
 
 function App() {
   return (
     <div className="page">
         {/* <Header /> */}
-        {/* <Main /> */}
-        {/* <Login /> 
-        <Register /> */}
+        <Main />
+        {/* <Login />  */}
+        {/* <Register /> */}
         {/* <Profile /> */}
-        {/* <Footer /> */}
         {/* <Page404 /> */}
-        <Movies />
+        {/* <Movies /> */}
+        {/* <SavedMovies /> */}
+        {/* <Preloader /> */}
+        {/* <Footer /> */}
     </div>
   );
 }

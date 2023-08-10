@@ -1,26 +1,27 @@
-.form-welcome {
+.login {
   display: flex;
   flex-direction: column;
   max-width: 396px;
   margin: 0 auto;
 }
 
-.form-welcome__title {
+.login__title {
   font-weight: 500;
   font-size: 24px;
   line-height: normal;
-  text-align: center;
-  padding: 40px 0 40px;
+  padding: 40px 0 20px;
+  margin: 0;
 }
 
-.form-welcome__input-label {
+.login__input-label {
   color: #a0a0a0;
   font-size: 10px;
   font-weight: 400;
   line-height: normal;
+  padding:20px 0 10px;
 }
 
-.form-welcome__input {
+.login__input {
   width: 100%;
   height: 46px;
   border: none;
@@ -34,15 +35,16 @@
   background: #f9f9f9;
 }
 
-.form-welcome__link-text {
+.login__link-text {
   color: #a0a0a0;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
+  margin: 0;
 }
 
-.form-welcome__link {
+.login__link {
   color: #ff6838;
   font-size: 14px;
   font-weight: 400;
@@ -50,7 +52,7 @@
   text-decoration: none;
 }
 
-.form-welcome__button {
+.login__button {
   width: 100%;
   min-height: 45px;
   margin: 179px 0 16px;
@@ -62,4 +64,28 @@
   cursor: pointer;
   border: none;
   border-radius: 3px;
+}
+
+@media screen and (max-width: 450px) {
+  .login {
+    max-width: 260px;
+  }
+  
+  .login__title {
+    text-align: center;
+    padding: 50px 0 60px;
+  }
+  
+  .login__link-text {
+    font-size: 12px;
+  }
+  
+  .login__link {
+    font-size: 12px;
+  }
+  
+  .login__button {
+    margin: 267px 0 14px;
+    font-size: 12px;
+  }
 }

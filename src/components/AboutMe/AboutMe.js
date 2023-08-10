@@ -9,6 +9,7 @@ function AboutMe() {
                 <h2 className="about-me__header-text">Студент</h2>
             </div>
             <div className="about-me__note">
+                <img className="about-me__avatar" alt="Фото" src={photo} />
                 <h3 className="about-me__name">Виталий</h3>
                 <p className="about-me__job">Фронтенд-разработчик, 30 лет</p>
                 <p className="about-me__description">Я родился и живу в Саратове,
@@ -17,7 +18,6 @@ function AboutMe() {
                     После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл
                     с постоянной работы.</p>
                 <Link className='about-me__link' to="//github.com/bl0nda" target="_blank">Github</Link>
-                <img className="about-me__avatar" alt="Фото" src={photo} />
             </div>
         </section>
     );

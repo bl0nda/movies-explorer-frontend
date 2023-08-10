@@ -24,7 +24,6 @@
   font-weight: 400;
   letter-spacing: -2px;
   margin: 0 auto;
-  padding-bottom: 23px;
 }
 
 .techs__subtitle {
@@ -33,11 +32,12 @@
   line-height: 1.43;
   letter-spacing: -0.56px;
   margin: 26px auto 100px;
+  max-width: 460px;
 }
 
 .techs__container {
   display: flex;
-  row-gap: 10px;
+  column-gap: 10px;
   flex-direction: row;
   align-items: center;
   justify-content: center;

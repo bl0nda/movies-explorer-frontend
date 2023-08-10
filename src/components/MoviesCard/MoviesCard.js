@@ -1,29 +1,28 @@
-import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useLocation } from "react-router-dom";
 import './MoviesCard.css';
 
-function MoviesCard(movie, onCardLike) {
-    const currentUser = useContext(CurrentUserContext);
-    const isLiked = movie.likes.some((i) => i._id === currentUser._id);
-    const movieSaveButtonClassName = `movie__save-button ${isLiked && "movie__like-button_active"
-        }`;
+function MoviesCard(props, onCardLike) {
+    const location = useLocation();
 
     function handleLikeClick() {
-        onCardLike(movie);
+        onCardLike(props.movie);
     }
 
     return (
         <div className='movie'>
             <div className='movie__header'>
                 <div className='movie__description'>
-                    <h2 className='movie__title'>{movie.nameRu}</h2>
-                    <p className='movie__duration'>{movie.duration}</p>
+                    <h2 className='movie__title'>{props.movie.nameRU}</h2>
+                    <p className='movie__duration'>{props.movie.duration}</p>
                 </div>
                 <button type="button"
-                    className={movieSaveButtonClassName}
-                    onClick={handleLikeClick}></button>
+                    className={location.pathname === "/movies"
+                    ? "movie__save-button movie__save-button_active"
+                    : "movie__save-button movie__save-button_inactive"}
+                    onClick={handleLikeClick}>
+                </button>
             </div>
-            <img className='movie__thumbnail' alt={movie.nameRU} src={movie.thumbnail} />
+            <img className='movie__thumbnail' alt={props.movie.nameRU} src={props.movie.thumbnail} />
         </div>
     );
 }

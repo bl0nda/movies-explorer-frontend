@@ -3,25 +3,13 @@
   flex-direction: column;
   max-width: calc(100% - 70px*2);
   margin: 0 auto;
+  padding-top: 84px;
 }
 
 .movies-card-list__container {
   display: grid;
   row-gap: 24px;
-  column-gap: 30px;
+  column-gap: 24px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
-}
-
-.movies-card-list__btn {
-    margin: 60px auto 90px;
-    display: block;
-    border: none;
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    transition: opacity .7s;
 }

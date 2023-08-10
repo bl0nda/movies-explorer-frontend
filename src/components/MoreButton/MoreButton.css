@@ -1,0 +1,12 @@
+.more-button {
+    margin: 60px auto 90px;
+    display: block;
+    border: none;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: opacity .7s;
+}

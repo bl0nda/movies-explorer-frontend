@@ -6,9 +6,8 @@ function MoviesCardList({ movies }) {
         <section className='movies-card-list'>
             <div className='movies-card-list__container'>
                 {movies.map((movie) =>
-                    <MoviesCard key={movie.movieId} />)}
+                    <MoviesCard key={movie.movieId} movie={movie} />)}
             </div>
-            <button type='button' className='movies-card-list__btn'>Ещё</button>
         </section>
     );
 }

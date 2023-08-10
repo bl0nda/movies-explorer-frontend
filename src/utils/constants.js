@@ -14,7 +14,7 @@ import twelve from '../images/movies/pic__COLOR_pic (10).png';
 const movies = [{
     duration: '1ч 47м',
     thumbnail: one,
-    nameRU: "33 слова о дизайне",
+    nameRU: '33 слова о дизайне',
     movieId: 1,
 },
 {
@@ -28,7 +28,7 @@ const movies = [{
     thumbnail: three,
     nameRU: "33 слова о дизайне",
     movieId: 3,
-    savedmovie: true,
+    saved: true,
 },
 {
     duration: '1ч 47м',
@@ -41,7 +41,7 @@ const movies = [{
     thumbnail: five,
     nameRU: "33 слова о дизайне",
     movieId: 5,
-    savedmovie: true,
+    saved: true,
 },
 {
     duration: '1ч 47м',
@@ -72,7 +72,7 @@ const movies = [{
     thumbnail: ten,
     nameRU: "33 слова о дизайне",
     movieId: 10,
-    savedmovie: true,
+    saved: true,
 },
 {
     duration: '1ч 47м',

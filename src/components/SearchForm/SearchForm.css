@@ -1,0 +1,34 @@
+.search__form {
+  padding: 70px 70px 45px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seach__icon {
+  background-image: url(../../images/search.svg);
+  background-repeat: no-repeat;
+  width: 34px;
+  height: 34px;
+  background-position: center;
+}
+
+.search__field {
+  font-family: inherit;
+  color: #a0a0a0;
+  text-align: center;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+}
+
+.search__btn {
+  background-image: url(../../images/find.svg);
+  background-repeat: no-repeat;
+  width: 34px;
+  height: 34px;
+  border: none;
+}

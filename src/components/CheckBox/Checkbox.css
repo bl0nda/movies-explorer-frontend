@@ -1,0 +1,26 @@
+.checkbox {
+   text-align: center; 
+}
+
+.checkbox__element {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+}
+
+.checkbox__visible {
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    background-image: url(../../images/checkbox.svg);
+    border: none;
+    border-radius: 10px;
+    margin-right: 12px;
+    vertical-align: sub;
+}
+
+.checkbox__element:disabled + span {} /* выключенный */
+.checkbox__element:checked + span {} /* выбранный */
+.checkbox__element:focus + span {} /* в фокусе */

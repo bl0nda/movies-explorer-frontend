@@ -23,28 +23,28 @@ export function Login({ handleLogin }) {
 
   return (
     <main className="main">
-      <form className="form-welcome" onSubmit={handleSubmit}>
-        <h2 className="form-welcome__title">Рады видеть!</h2>
-        <label className="form-welcome__input-label">E-mail</label>
+      <form className="login" onSubmit={handleSubmit}>
+        <h2 className="login__title">Рады видеть!</h2>
+        <label className="login__input-label">E-mail</label>
         <input
           type="email"
-          className="form-welcome__input form-welcome__input_type_email"
+          className="login__input login__input_type_email"
           name="email"
           onChange={handleChange}
           required
         ></input>
-        <label className="form-welcome__input-label">Пароль</label>
+        <label className="login__input-label">Пароль</label>
         <input
           type="password"
-          className="form-welcome__input form-welcome__input_type_password"
+          className="login__input login__input_type_password"
           name="password"
           onChange={handleChange}
           required
         ></input>
-        <button type="submit" className="form-welcome__button">
+        <button type="submit" className="login__button">
           Войти
         </button>
-        <p className="form-welcome__link-text">Ещё не зарегистрированы? <Link className="form-welcome__link" to="/sign-up">Регистрация</Link></p>
+        <p className="login__link-text">Ещё не зарегистрированы? <Link className="login__link" to="/sign-up">Регистрация</Link></p>
       </form>
     </main>
   );
