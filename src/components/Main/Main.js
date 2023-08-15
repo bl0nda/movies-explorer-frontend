@@ -7,9 +7,9 @@ import Techs from "../Techs/Techs";
 function Main() {
     return (
         <main className="main">
-            {/* <Promo /> */}
+            <Promo />
             {/* <AboutProject /> */}
-            <Techs />
+            {/* <Techs /> */}
             {/* <AboutMe /> */}
             {/* <Portfolio /> */}
         </main>

@@ -1,0 +1,108 @@
+.burger-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  transition: visibility 0.5s ease-in-out;
+}
+
+.burger-menu_active {
+  display: flex;
+  flex-direction: column;
+}
+
+.burger-menu__container {
+  max-width: 520px;
+}
+
+.burger-menu__links-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.burger-menu__btn {
+  background-image: url(../../images/burger-icon.svg);
+  width: 44px;
+  height: 44px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.burger-menu__btn_hidden {
+  display: none;
+}
+
+.burger-menu__close-btn {
+  border: none;
+  position: absolute;
+  right: 23px;
+  top: 23px;
+  background-color: transparent;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  max-width: 22px;
+  height: 22px;
+  width: 100%;
+  background-image: url(../../images/close-btn.svg);
+}
+
+.burger-menu__links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  padding-top: 159px;
+}
+
+.burger-menu__link {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+.burger-menu__link_active {
+  border-bottom: 2px solid black;
+  width: 72px;
+}
+
+.burger-menu__profile {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 100px;
+  text-decoration: none;
+}
+
+.burger-menu__profile-link {
+  font-size: 14px;
+  line-height: 1.14;
+  font-style: normal;
+  font-weight: 500;
+  color: black;
+  margin: 0;
+}
+
+.burger-menu__profile-logo {
+  width: 26px;
+  height: 30px;
+  background-image: url(../../images/icon_profile.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 769px) {
+}

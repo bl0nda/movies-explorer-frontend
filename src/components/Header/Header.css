@@ -2,9 +2,10 @@
   max-width: calc(100% - 70px * 2);
   margin: 0 auto;
   min-height: 74px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 44px;
   align-items: center;
-  justify-content: space-between;
 }
 
 .header__logo {
@@ -13,7 +14,6 @@
   background-image: url(../../images/logo_header.svg);
   background-size: cover;
   background-position: center;
-  margin-right: 44px;
 }
 
 .header__nav {
@@ -34,7 +34,7 @@
   opacity: 0.6; /* поменять значение */
 }
 
-.header__profile {
+/* .header__profile {
   display: flex;
   gap: 17px;
   align-items: center;
@@ -55,4 +55,9 @@
   background-image: url(../../images/icon_profile.svg);
   background-repeat: no-repeat;
   background-position: center;
+} */
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
 }

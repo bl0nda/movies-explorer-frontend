@@ -14,7 +14,7 @@ import Preloader from '../Preloader/Preloader';
 function App() {
   return (
     <div className="page">
-        {/* <Header /> */}
+        <Header />
         <Main />
         {/* <Login />  */}
         {/* <Register /> */}

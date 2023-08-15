@@ -1,46 +1,33 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import './Header.css';
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import Navigation from "../Navigation/Navigation";
 
 function Header() {
+  const location = useLocation();
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
-    <header className="header">
-      <div className="header__logo"></div>
-      <div className="header__nav">
-        <p className="header__link">Фильмы</p>
-        <p className="header__link">Сохраненные фильмы</p>
-        {/* <Routes>
-          <Route
-            path="movies"
-            element={
-              <Link className="header__link" to="/movies">
-                Фильмы
-              </Link>
-            }
-          />
-          <Route
-            path="__"
-            element={
-              <Link className="header__link" to="/__">
-                Сохраненные фильмы
-              </Link>
-            }
-          />
-        </Routes> */}
+    <header 
+    className="background"
+    style={{
+      background: useLocation().pathname === "/" ? "#465dff" : "#fff",
+    }}>
+      <div className="header">
+        <div className="header__logo"></div>
+        {!loggedIn ? (<div className="header__main">
+          <p className="header__main-link">Регистрация</p>
+          <p className="header__main-link header__main-link_active">Войти</p>
+        </div>)
+          : (
+            <div className="header__container">
+              <Navigation />
+              {/* <BurgerMenu /> */}
+            </div>
+          )
+        }
       </div>
-      <div className="header__profile">
-        <p className="header__profile_link">Аккаунт</p>
-        {/* <Routes>
-          <Route
-            path="users/me"
-            element={<Link className="header__profile_link" to="/users/me">
-              Аккаунт
-            </Link>
-            }
-          />
-        </Routes> */}
-        <div className="header__profile_logo"></div>
-      </div >
     </header >
   );
 }
