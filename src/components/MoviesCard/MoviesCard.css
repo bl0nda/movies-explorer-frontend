@@ -57,4 +57,5 @@
     max-width: 364px;
     min-height: 203px;
     object-fit: cover;
+    object-position: center;
 }

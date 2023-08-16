@@ -17,12 +17,26 @@
   flex-direction: column;
   gap: 30px;
   padding: 0;
+  list-style: none;
 }
+
+/* .portfolio__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+} */
 
 .portfolio__link {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  text-decoration: none;
+  color: #000;
+  transition: opacity .3s ease-in-out;
+}
+
+.portfolio__link:hover {
+  opacity: 0.7;
 }
 
 .portfolio__link-title {

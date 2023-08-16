@@ -1,4 +1,3 @@
-import './Movies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import MoreButton from '../MoreButton/MoreButton';

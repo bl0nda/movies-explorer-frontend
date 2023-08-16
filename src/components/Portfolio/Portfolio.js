@@ -7,18 +7,23 @@ function Portfolio() {
             <h2 className='portfolio__head'>Портфолио</h2>
             <nav className='portfolio__container'>
                 <ul className='portfolio__links'>
-                    <li className='portfolio__link'>
-                        <h3 className='portfolio__link-title'>Статичный сайт</h3>
-                        <div className='portfolio__link-icon'></div>
+                    <li className='portfolio__item'>
+                        <Link className='portfolio__link' to="" target='_blank'>
+                            <h3 className='portfolio__link-title'>Статичный сайт</h3>
+                            <div className='portfolio__link-icon'></div>
+                        </Link>
                     </li>
-                    <li className='portfolio__link'>
-                        <h3 className='portfolio__link-title'>Адаптивный сайт</h3>
-                        <div className='portfolio__link-icon'></div>
+                    <li className='portfolio__item'>
+                        <Link className='portfolio__link' to="" target='_blank'>
+                            <h3 className='portfolio__link-title'>Адаптивный сайт</h3>
+                            <div className='portfolio__link-icon'></div>
+                        </Link>
                     </li>
-                    <li className='portfolio__link'>
-
-                        <h3 className='portfolio__link-title'>Одностраничное приложение</h3>
-                        <div className='portfolio__link-icon'></div>
+                    <li className='portfolio__item'>
+                        <Link className='portfolio__link' to="" target='_blank'>
+                            <h3 className='portfolio__link-title'>Одностраничное приложение</h3>
+                            <div className='portfolio__link-icon'></div>
+                        </Link>
                     </li>
                 </ul >
             </nav >

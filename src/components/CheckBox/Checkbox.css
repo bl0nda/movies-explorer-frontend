@@ -1,5 +1,11 @@
 .checkbox {
    text-align: center; 
+   padding-bottom: 48px;
+}
+
+.checkbox__container {
+    font-size: 14px;
+    line-height: 1.29;
 }
 
 .checkbox__element {
@@ -21,6 +27,9 @@
     vertical-align: sub;
 }
 
-.checkbox__element:disabled + span {} /* выключенный */
+.checkbox__element:disabled + span {
+    background-image: url(../../images/smalltumboff.svg);
+} /* выключенный */
+
 .checkbox__element:checked + span {} /* выбранный */
 .checkbox__element:focus + span {} /* в фокусе */

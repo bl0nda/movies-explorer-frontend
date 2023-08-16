@@ -32,6 +32,8 @@ export function Register({ handleRegister }) {
           type="name"
           className="form-welcome__input form-welcome__input_type_name"
           name="name"
+          minLength="2"
+          maxLength="40"
           value={formValue.name}
           onChange={handleChange}
           required
@@ -41,6 +43,8 @@ export function Register({ handleRegister }) {
           type="email"
           className="form-welcome__input form-welcome__input_type_email"
           name="email"
+          minLength="2"
+          maxLength="30"
           value={formValue.email}
           onChange={handleChange}
           required
@@ -50,6 +54,8 @@ export function Register({ handleRegister }) {
           type="password"
           className="form-welcome__input form-welcome__input_type_password"
           name="password"
+          minLength="8"
+          maxLength="30"
           placeholder="Пароль"
           value={formValue.password}
           onChange={handleChange}

@@ -31,6 +31,8 @@ export function Login({ handleLogin }) {
           type="email"
           className="login__input login__input_type_email"
           name="email"
+          minLength="2"
+          maxLength="30"
           onChange={handleChange}
           required
         ></input>
@@ -39,6 +41,8 @@ export function Login({ handleLogin }) {
           type="password"
           className="login__input login__input_type_password"
           name="password"
+          minLength="8"
+          maxLength="30"
           onChange={handleChange}
           required
         ></input>

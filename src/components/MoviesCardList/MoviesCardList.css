@@ -3,7 +3,7 @@
   flex-direction: column;
   max-width: calc(100% - 70px*2);
   margin: 0 auto;
-  padding-top: 84px;
+  padding-top: 70px;
 }
 
 .movies-card-list__container {

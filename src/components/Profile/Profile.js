@@ -33,6 +33,8 @@ export function Profile({ handleLogin }) {
               type="name"
               className="profile__input profile__input_type_name"
               name="name"
+              minLength="2"
+              maxLength="40"
               value={formValue.name}
               onChange={handleChange}
               required
@@ -43,6 +45,8 @@ export function Profile({ handleLogin }) {
               type="email"
               className="profile__input profile__input_type_email"
               name="email"
+              minLength="2"
+              maxLength="30"
               value={formValue.email}
               onChange={handleChange}
               required
