@@ -1,13 +1,19 @@
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
-import {movies} from '../../utils/constants';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import { movies } from '../../utils/constants';
 
-function Movies () {
+function Movies() {
     return (
-        <section className='movies'>
-            <SearchForm />
-            <MoviesCardList movies={movies.filter((movie) => movie.saved === true)} />
-        </section>
+        <>
+            <Header />
+            <section className='movies'>
+                <SearchForm />
+                <MoviesCardList movies={movies.filter((movie) => movie.saved === true)} />
+            </section>
+            <Footer />
+        </>
     )
 }
 export default Movies;

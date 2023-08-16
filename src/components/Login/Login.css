@@ -2,7 +2,15 @@
   display: flex;
   flex-direction: column;
   max-width: 396px;
-  margin: 0 auto;
+  margin: 70px auto 0;
+}
+
+.login__logo {
+  width: 38px;
+  height: 38px;
+  background-image: url(../../images/logo_header.svg);
+  background-size: cover;
+  background-position: center;
 }
 
 .login__title {
@@ -25,7 +33,7 @@
   width: 100%;
   height: 46px;
   border: none;
-  padding: 0;
+  padding: 0 0 0 15px;
   margin: 0;
   font-size: 13px;
   line-height: normal;
@@ -71,6 +79,10 @@
     max-width: 260px;
   }
   
+  .login__logo {
+    margin: 0 auto;
+  }
+
   .login__title {
     text-align: center;
     padding: 50px 0 60px;

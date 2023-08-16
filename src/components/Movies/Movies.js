@@ -2,15 +2,22 @@ import './Movies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import MoreButton from '../MoreButton/MoreButton';
-import {movies} from '../../utils/constants';
+import { movies } from '../../utils/constants';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
-function Movies () {
+
+function Movies() {
     return (
-        <section className='movies'>
-            <SearchForm />
-            <MoviesCardList movies={movies}/>
-            <MoreButton />
-        </section>
+        <>
+            <Header />
+            <section className='movies'>
+                <SearchForm />
+                <MoviesCardList movies={movies} />
+                <MoreButton />
+            </section>
+            <Footer />
+        </>
     )
 }
 export default Movies;

@@ -2,7 +2,15 @@
   display: flex;
   flex-direction: column;
   max-width: 396px;
-  margin: 0 auto;
+  margin: 70px auto 0;
+}
+
+.form-welcome__logo {
+  width: 38px;
+  height: 38px;
+  background-image: url(../../images/logo_header.svg);
+  background-size: cover;
+  background-position: center;
 }
 
 .form-welcome__title {
@@ -25,7 +33,7 @@
   width: 100%;
   height: 46px;
   border: none;
-  padding: 0;
+  padding: 0 0 0 15px;
   margin: 0;
   font-size: 13px;
   line-height: normal;
@@ -33,6 +41,10 @@
   color: #000;
   border-radius: 8px;
   background: #f9f9f9;
+}
+
+.form-welcome__input_type_password {
+  color: #ee3465;
 }
 
 .form-welcome__link-text {
@@ -78,20 +90,24 @@
   .form-welcome {
     max-width: 260px;
   }
-  
+
+  .form-welcome__logo {
+    margin: 0 auto;
+  }
+
   .form-welcome__title {
     text-align: center;
     padding: 50px 0 60px;
   }
-  
+
   .form-welcome__link-text {
     font-size: 12px;
   }
-  
+
   .form-welcome__link {
     font-size: 12px;
   }
-  
+
   .form-welcome__button {
     margin: 157px 0 14px;
     font-size: 12px;

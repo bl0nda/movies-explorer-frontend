@@ -38,6 +38,7 @@
   line-height: normal;
   font-weight: 400;
   color: #000;
+  text-align: right;
 }
 
 .profile__link {
@@ -59,4 +60,31 @@
   line-height: normal;
   text-decoration: none;
   padding: 220px 0 16px;
+}
+
+@media screen and (max-width: 450px) {
+  .profile {
+    max-width: calc(100% - 30px * 2);
+  }
+
+  .profile__title {
+    text-align: center;
+    padding: 70px 0 80px;
+  }
+
+  .profile__link {
+    font-size: 12px;
+    padding-bottom: 40px;
+  }
+
+  .profile__edit {
+    color: #000;
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    padding: 0 0 16px;
+  }
 }

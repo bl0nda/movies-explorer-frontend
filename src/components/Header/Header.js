@@ -5,7 +5,7 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Navigation from "../Navigation/Navigation";
 
 function Header() {
-  const location = useLocation();
+  
   const [loggedIn, setLoggedIn] = useState(true);
 
   return (
