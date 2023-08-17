@@ -2,7 +2,7 @@
   max-width: 364px;
   min-height: 271px;
   position: relative;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .movie__header {
@@ -54,8 +54,32 @@
 }
 
 .movie__thumbnail {
-    max-width: 364px;
+    width: 100%;
     min-height: 203px;
     object-fit: cover;
     object-position: center;
+    display: block;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 769px) {
+  .movie {
+    max-width: 339px;
+    min-height: 258px;
+  }
+
+  .movie__thumbnail {
+    min-height: 190px;
+}
+}
+
+@media screen and (max-width: 450px) {
+  .movie {
+    max-width: 300px;
+    min-height: 236px;
+  }
+
+  .movie__thumbnail {
+    min-height: 168px;
+}
 }

@@ -62,6 +62,11 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: none;
+  transition: opacity .3s ease-in-out;
+}
+
+.form-welcome__link:hover {
+  opacity: 0.7;
 }
 
 .form-welcome__button {
@@ -72,10 +77,14 @@
   color: #ffffff;
   font-size: 14px;
   line-height: normal;
-  transition: opacity ease-in-out;
+  transition: opacity .3s ease-in-out;
   cursor: pointer;
   border: none;
   border-radius: 3px;
+}
+
+.form-welcome__button:hover {
+  opacity: 0.8;
 }
 
 .form-welcome__error {

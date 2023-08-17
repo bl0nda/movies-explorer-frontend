@@ -49,7 +49,7 @@ export function Login({ handleLogin }) {
         <button type="submit" className="login__button">
           Войти
         </button>
-        <p className="login__link-text">Ещё не зарегистрированы? <Link className="login__link" to="/sign-up">Регистрация</Link></p>
+        <p className="login__link-text">Ещё не зарегистрированы? <Link className="login__link" to="/signup">Регистрация</Link></p>
       </form>
     </main>
   );

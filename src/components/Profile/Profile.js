@@ -53,7 +53,7 @@ export function Profile({ handleLogin }) {
             ></input>
           </label>
           <Link className="profile__edit" to="/">Редактировать</Link>
-          <Link className="profile__link" to="/sign-in">Выйти из аккаунта</Link>
+          <Link className="profile__link" to="/signin">Выйти из аккаунта</Link>
         </form>
       </main>
     </>

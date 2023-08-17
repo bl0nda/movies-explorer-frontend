@@ -25,11 +25,21 @@
     border-radius: 10px;
     margin-right: 12px;
     vertical-align: sub;
+    cursor: pointer;
 }
 
 .checkbox__element:disabled + span {
     background-image: url(../../images/smalltumboff.svg);
 } /* выключенный */
 
-.checkbox__element:checked + span {} /* выбранный */
-.checkbox__element:focus + span {} /* в фокусе */
+.checkbox__element:checked + span {
+    background-image: url(../../images/checkbox.svg);
+} /* выбранный */
+
+@media screen and (max-width: 450px) {
+    .checkbox__container {
+        font-size: 11px;
+        line-height: 1.64;
+    }
+}
+

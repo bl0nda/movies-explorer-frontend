@@ -5,7 +5,7 @@ function SearchForm() {
     return (
         <section className='search'>
             <form className='search__form'>
-                <div className='seach__icon'></div>
+                <div className='search__icon'></div>
                 <input
                     type="text"
                     className="search__field"

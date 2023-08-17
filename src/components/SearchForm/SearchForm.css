@@ -4,9 +4,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.seach__icon {
+.search__icon {
   background-image: url(../../images/search.svg);
   background-repeat: no-repeat;
   width: 34px;
@@ -23,6 +25,7 @@
   font-weight: 500;
   line-height: normal;
   border: none;
+  padding: 0;
 }
 
 .search__btn {
@@ -31,4 +34,31 @@
   width: 34px;
   height: 34px;
   border: none;
+}
+
+@media screen and (max-width: 769px) {
+  .search__form {
+    padding: 86px 30px 45px;
+  }
+
+  .search__field {
+    max-width: calc(100% - 70px);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .search__form {
+    padding: 92px 14px 60px;
+    justify-content: flex-start;
+  }
+
+  .search__icon {
+    display: none;
+  }
+
+  .search__field {
+    text-align: start;
+    font-size: 18px;
+    max-width: calc(100% - 34px);
+  }
 }

@@ -49,6 +49,11 @@
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
+  transition: opacity .3s ease-in-out;
+}
+
+.profile__link:hover {
+  opacity: 0.7;
 }
 
 .profile__edit {
@@ -60,6 +65,11 @@
   line-height: normal;
   text-decoration: none;
   padding: 220px 0 16px;
+  transition: opacity .3s ease-in-out;
+}
+
+.profile__edit:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 450px) {
@@ -85,6 +95,5 @@
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
-    padding: 0 0 16px;
   }
 }
