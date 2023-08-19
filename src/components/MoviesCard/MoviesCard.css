@@ -1,6 +1,8 @@
 .movie {
   max-width: 364px;
   min-height: 271px;
+  background-color: #FDFDFD;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
   position: relative;
   box-sizing: border-box;
 }
@@ -10,6 +12,7 @@
   min-height: 68px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .movie__description {
@@ -37,20 +40,27 @@
   margin: 0;
 }
 
-.movie__save-button {
+.movie__button {
   width: 30px;
   height: 30px;
   background-repeat: no-repeat;
   background-size: cover;
   border: none;
+  padding: 0;
+  margin-right: 14px;
+  background-color: transparent;
 }
 
-.movie__save-button_inactive {
+.movie__button_type_save {
   background-image: url(../../images/save9d.svg);
 }
 
-.movie__save-button_active {
+.movie__button_type_save:active {
   background-image: url(../../images/save9_active.svg);
+}
+
+.movie__button_type_delete {
+  background-image: url(../../images/del-btn.svg);
 }
 
 .movie__thumbnail {
@@ -62,7 +72,7 @@
     margin: 0 auto;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 805px) {
   .movie {
     max-width: 339px;
     min-height: 258px;

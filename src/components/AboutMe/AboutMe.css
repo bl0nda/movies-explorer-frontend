@@ -120,7 +120,7 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
   .about-me {
     max-width: calc(100% - 14px * 2);
   }
@@ -162,11 +162,20 @@
   }
 
   .about-me__avatar {
-    max-width: 100%;
+    max-width: 292px;
+    margin: 0 auto;
     min-height: 352px;
   }
 
   .about-me__link {
     align-self: flex-start;
   }
+}
+
+@media screen and (max-width: 320px) {
+  
+  .about-me__avatar {
+    max-width: 100%;
+    min-height: auto;
+}
 }

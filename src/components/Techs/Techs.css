@@ -25,7 +25,6 @@
   font-weight: 400;
   letter-spacing: -2px;
   margin: 0 auto;
-  padding-left: 15px;
 }
 
 .techs__subtitle {
@@ -35,7 +34,6 @@
   letter-spacing: -0.56px;
   margin: 26px auto 100px;
   max-width: 460px;
-  padding-left: 15px;
 }
 
 .techs__container {
@@ -45,7 +43,7 @@
   align-items: center;
   justify-content: center;
   list-style: none;
-  padding: 0 0 102px 15px;
+  padding: 0 0 102px 0;
 }
 
 .techs__obj {

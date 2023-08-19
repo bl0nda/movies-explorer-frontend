@@ -1,12 +1,8 @@
 import { useLocation } from "react-router-dom";
 import './MoviesCard.css';
 
-function MoviesCard(props, onCardLike) {
+function MoviesCard(props) {
     const location = useLocation();
-
-    function handleLikeClick() {
-        onCardLike(props.movie);
-    }
 
     return (
         <div className='movie'>
@@ -17,9 +13,9 @@ function MoviesCard(props, onCardLike) {
                 </div>
                 <button type="button"
                     className={location.pathname === "/movies"
-                    ? "movie__save-button movie__save-button_active"
-                    : "movie__save-button movie__save-button_inactive"}
-                    onClick={handleLikeClick}>
+                    ? "movie__button movie__button_type_save"
+                    : "movie__button movie__button_type_delete"}
+                    >
                 </button>
             </div>
             <img className='movie__thumbnail' alt="постер фильма" src={props.movie.thumbnail} />

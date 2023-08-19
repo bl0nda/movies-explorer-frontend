@@ -26,7 +26,7 @@ export function Register({ handleRegister }) {
     <main className="main">
       <form className="form-welcome" onSubmit={handleSubmit}>
         <div className="form-welcome__logo"></div>
-        <h2 className="form-welcome__title">Добро пожаловать!</h2>
+        <h1 className="form-welcome__title">Добро пожаловать!</h1>
         <label className="form-welcome__input-label">Имя</label>
         <input
           type="name"

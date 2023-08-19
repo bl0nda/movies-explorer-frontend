@@ -31,12 +31,14 @@
 .search__btn {
   background-image: url(../../images/find.svg);
   background-repeat: no-repeat;
+  background-color: transparent;
   width: 34px;
   height: 34px;
   border: none;
+  padding: 0;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 805px) {
   .search__form {
     padding: 86px 30px 45px;
   }
@@ -48,8 +50,7 @@
 
 @media screen and (max-width: 450px) {
   .search__form {
-    padding: 92px 14px 60px;
-    justify-content: flex-start;
+    padding: 92px 14px 52px;
   }
 
   .search__icon {

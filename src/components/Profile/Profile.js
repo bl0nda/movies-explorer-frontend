@@ -27,7 +27,7 @@ export function Profile({ handleLogin }) {
       <Header />
       <main className="main">
         <form className="profile" onSubmit={handleSubmit}>
-          <h2 className="profile__title">Привет, {formValue.name}!</h2>
+          <h1 className="profile__title">Привет, {formValue.name}!</h1>
           <label className="profile__input-label">Имя
             <input
               type="name"

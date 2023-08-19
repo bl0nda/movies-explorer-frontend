@@ -1,0 +1,9 @@
+.movies {
+    min-height: calc(100vh - 74px - 172px); /* вычитаем высоту хедера и футера */
+  }
+  
+  @media screen and (max-width: 450px) {
+    .movies {
+      min-height: calc(100vh - 74px - 253px);
+    }
+  }

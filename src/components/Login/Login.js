@@ -25,7 +25,7 @@ export function Login({ handleLogin }) {
     <main className="main">
       <form className="login" onSubmit={handleSubmit}>
         <div className="login__logo"></div>
-        <h2 className="login__title">Рады видеть!</h2>
+        <h1 className="login__title">Рады видеть!</h1>
         <label className="login__input-label">E-mail</label>
         <input
           type="email"

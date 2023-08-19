@@ -18,15 +18,15 @@ function AboutProject() {
             </div>
             <div className='about-project__duration-container'>
                 <div className='about-project__duration'>
-                    <span className='about-project-background about-project-background_type_green'>
+                    <div className='about-project-background about-project-background_type_green'>
                         <p className='about-project__item-duration'>1 неделя</p>
-                    </span>
+                    </div>
                     <p className='about-project__item-subject'>Back-end</p>
                 </div>
                 <div className='about-project__duration'>
-                    <span className='about-project-background about-project-background_type_transparent'>
+                    <div className='about-project-background about-project-background_type_transparent'>
                         <p className='about-project__item-duration'>4 недели</p>
-                    </span>
+                    </div>
                     <p className='about-project__item-subject'>Front-end</p>
                 </div>
             </div>

@@ -36,6 +36,12 @@
     background-image: url(../../images/checkbox.svg);
 } /* выбранный */
 
+@media screen and (max-width: 805px) {
+    .checkbox {
+        padding-bottom: 61px;
+     }
+}
+
 @media screen and (max-width: 450px) {
     .checkbox__container {
         font-size: 11px;
