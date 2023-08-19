@@ -4,6 +4,7 @@
   min-height: 172px;
   display: flex;
   flex-direction: column;
+  background-color: #FAFAFA;
 }
 
 .footer__bottom-container {
@@ -44,6 +45,12 @@
 
 .footer__link:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 769px) {
+  .footer {
+    background-color: #fff;
+  }
 }
 
 @media screen and (max-width: 450px) {

@@ -65,9 +65,9 @@
   opacity: 0.7;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 805px) {
   .promo__container {
-    max-width: calc(100% - 50px * 2);
+    max-width: calc(100% - 44px * 2);
     padding: 140px 0 76px;
     display: flex;
     flex-direction: column-reverse;
@@ -97,7 +97,7 @@
 
 @media screen and (max-width: 450px) {
   .promo__container {
-    max-width: calc(100% - 10px * 2);
+    max-width: calc(100% - 8px * 2);
     padding: 70px 0 30px;
     gap: 44px;
   }

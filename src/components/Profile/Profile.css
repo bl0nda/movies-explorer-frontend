@@ -49,7 +49,7 @@
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .profile__link:hover {
@@ -65,7 +65,7 @@
   line-height: normal;
   text-decoration: none;
   padding: 220px 0 16px;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .profile__edit:hover {
@@ -94,6 +94,6 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    text-decoration: none;
+    border: none;
   }
 }

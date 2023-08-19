@@ -26,6 +26,7 @@
 .about-project__duration-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 110px;
 }
 
 .about-project__item {
@@ -55,7 +56,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
 }
 
 .about-project-background {
@@ -64,6 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 19px;
 }
 
 .about-project-background_type_green {
@@ -78,14 +79,14 @@
 
 .about-project__item-subject {
   color: #a0a0a0;
-  font-family: Suisse Intl;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
   margin: 0;
+  padding-bottom: 5px;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 805px) {
   .about-project {
     max-width: calc(100% - 50px * 2);
   }
@@ -106,11 +107,11 @@
   .about-project__duration {
     max-width: 140px;
     min-height: 67px;
-    gap: 15px;
   }
 
   .about-project-background {
     width: 140px;
+    margin-bottom: 15px;
   }
 
   .about-project__item-subject {
@@ -121,6 +122,11 @@
     column-gap: 55px;
     padding-bottom: 95px;
   }
+
+  .about-project__duration-container {
+    padding-bottom: 85px;
+  }
+  
 }
 
 @media screen and (max-width: 450px) {
@@ -159,11 +165,11 @@
   .about-project__duration {
     max-width: 100px;
     min-height: 67px;
-    gap: 23px;
   }
 
   .about-project-background {
     width: 100px;
+    margin-bottom: 9px;
   }
 
   .about-project__item-subject {
@@ -175,4 +181,7 @@
     font-size: 11px;
   }
   
+  .about-project__duration-container {
+    padding-bottom: 62px;
+  }
 }

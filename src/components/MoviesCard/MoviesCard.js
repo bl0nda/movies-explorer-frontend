@@ -22,7 +22,7 @@ function MoviesCard(props, onCardLike) {
                     onClick={handleLikeClick}>
                 </button>
             </div>
-            <img className='movie__thumbnail' alt={props.movie.nameRU} src={props.movie.thumbnail} />
+            <img className='movie__thumbnail' alt="постер фильма" src={props.movie.thumbnail} />
         </div>
     );
 }

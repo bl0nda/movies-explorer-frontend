@@ -52,8 +52,8 @@ export function Profile({ handleLogin }) {
               required
             ></input>
           </label>
-          <Link className="profile__edit" to="/">Редактировать</Link>
-          <Link className="profile__link" to="/signin">Выйти из аккаунта</Link>
+          <button type="button" className="profile__edit">Редактировать</button>
+          <Link className="profile__link" to="/">Выйти из аккаунта</Link>
         </form>
       </main>
     </>

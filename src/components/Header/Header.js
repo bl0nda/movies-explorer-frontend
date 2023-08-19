@@ -6,7 +6,7 @@ import Navigation from "../Navigation/Navigation";
 
 function Header() {
   
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <header 

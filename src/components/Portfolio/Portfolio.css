@@ -51,12 +51,11 @@
   width: 29px;
   height: 60px;
   background-repeat: no-repeat;
-  background-size: contain;
   background-position: center;
   background-image: url("../../images/link-icon.svg");
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 805px) {
   .portfolio {
     max-width: calc(100% - 50px * 2);
     min-height: 390px;
@@ -105,5 +104,9 @@
     width: 18px;
     height: 28px;
     background-size: 65%;
+  }
+
+  .portfolio__container {
+    padding-bottom: 50px;
   }
 }
