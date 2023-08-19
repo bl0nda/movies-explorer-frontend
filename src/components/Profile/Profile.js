@@ -30,12 +30,13 @@ export function Profile({ handleLogin }) {
           <h1 className="profile__title">Привет, {formValue.name}!</h1>
           <label className="profile__input-label">Имя
             <input
-              type="name"
+              type="text"
               className="profile__input profile__input_type_name"
               name="name"
               minLength="2"
               maxLength="40"
               value={formValue.name}
+              placeholder="Имя"
               onChange={handleChange}
               required
             ></input>
@@ -48,6 +49,7 @@ export function Profile({ handleLogin }) {
               minLength="2"
               maxLength="30"
               value={formValue.email}
+              placeholder="email"
               onChange={handleChange}
               required
             ></input>

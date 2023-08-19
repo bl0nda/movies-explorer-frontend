@@ -25,15 +25,16 @@ export function Register({ handleRegister }) {
   return (
     <main className="main">
       <form className="form-welcome" onSubmit={handleSubmit}>
-        <div className="form-welcome__logo"></div>
+        <Link to="/" className="form-welcome__logo"></Link>
         <h1 className="form-welcome__title">Добро пожаловать!</h1>
         <label className="form-welcome__input-label">Имя</label>
         <input
-          type="name"
+          type="text"
           className="form-welcome__input form-welcome__input_type_name"
           name="name"
           minLength="2"
           maxLength="40"
+          placeholder='Имя'
           value={formValue.name}
           onChange={handleChange}
           required
@@ -45,6 +46,7 @@ export function Register({ handleRegister }) {
           name="email"
           minLength="2"
           maxLength="30"
+          placeholder='email'
           value={formValue.email}
           onChange={handleChange}
           required

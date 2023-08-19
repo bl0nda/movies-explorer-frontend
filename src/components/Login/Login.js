@@ -24,7 +24,7 @@ export function Login({ handleLogin }) {
   return (
     <main className="main">
       <form className="login" onSubmit={handleSubmit}>
-        <div className="login__logo"></div>
+        <Link to="/" className="login__logo"></Link>
         <h1 className="login__title">Рады видеть!</h1>
         <label className="login__input-label">E-mail</label>
         <input
@@ -33,6 +33,7 @@ export function Login({ handleLogin }) {
           name="email"
           minLength="2"
           maxLength="30"
+          placeholder="email"
           onChange={handleChange}
           required
         ></input>
@@ -43,6 +44,7 @@ export function Login({ handleLogin }) {
           name="password"
           minLength="8"
           maxLength="30"
+          placeholder="Пароль"
           onChange={handleChange}
           required
         ></input>

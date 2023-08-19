@@ -9,7 +9,7 @@
   font-weight: 500;
   font-size: 24px;
   line-height: normal;
-  text-align: center;
+  margin: 0 auto;
   padding: 74px 0 123px;
 }
 
@@ -64,7 +64,7 @@
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
-  padding: 220px 0 16px;
+  padding: 186px 0 16px;
   border: none;
   transition: opacity 0.3s ease-in-out;
 }

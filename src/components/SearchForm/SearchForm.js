@@ -13,6 +13,7 @@ function SearchForm() {
                     placeholder="Фильм"
                     value=""
                     autofocus
+                    required
                 ></input>
                 <button
                     className='search__btn'
