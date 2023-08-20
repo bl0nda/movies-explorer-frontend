@@ -73,6 +73,16 @@
   opacity: 0.7;
 }
 
+@media screen and (max-width: 805px) {
+  .profile__title {
+    padding: 236px 0 96px;
+  }
+
+  .profile__edit {
+    padding: 176px 0 16px;
+  }
+}
+
 @media screen and (max-width: 450px) {
   .profile {
     max-width: calc(100% - 30px * 2);
@@ -96,5 +106,6 @@
     font-weight: 500;
     line-height: normal;
     border: none;
+    padding: 345px 0 16px;
   }
 }

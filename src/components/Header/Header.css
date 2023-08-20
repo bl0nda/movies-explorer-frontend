@@ -48,6 +48,39 @@
 }
 
 .header__container {
+  max-width: 100%;
+  min-height: inherit;
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 805px) {
+  .header {
+    max-width: calc(100% - 30px * 2);
+  }
+
+  .header__main {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    max-width: calc(100% - 14px * 2);
+  }
+
+  .header__main {
+    gap: 14px;
+  }
+
+  .header__main-link {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .header__main-link_active {
+    width: 54px;
+    height: 26px;
+}
 }

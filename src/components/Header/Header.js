@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useLocation, Link, NavLink } from "react-router-dom";
 import './Header.css';
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Navigation from "../Navigation/Navigation";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 function Header() {
   
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <header 
@@ -22,8 +22,8 @@ function Header() {
         </div>)
           : (
             <div className="header__container">
+              <BurgerMenu />
               <Navigation />
-              {/* <BurgerMenu /> */}
             </div>
           )
         }
