@@ -36,6 +36,12 @@
   height: 34px;
   border: none;
   padding: 0;
+  cursor: pointer;
+  transition: opacity .3s ease-in-out;
+}
+
+.search__btn:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 805px) {

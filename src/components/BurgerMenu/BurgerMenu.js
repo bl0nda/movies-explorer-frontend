@@ -1,16 +1,15 @@
 import './BurgerMenu.css';
-import { Link } from 'react-router-dom';
 
-function BurgerMenu({isOpen}) {
-    const burgerButton = `burger-menu__btn ${isOpen ? 'burger-menu__btn_hidden' : 'burger-menu__btn'}`;
+function BurgerMenu({isOpen, onClick, onClose}) {
+    const burgerButton = `burger-menu__btn ${isOpen ? 'burger-menu__btn_close' : 'burger-menu__btn'}`;
 
     return (
         <>
             <button
                 type='button'
                 className={burgerButton}
+                onClick={onClick}
             />
-           
         </>
     );
 }

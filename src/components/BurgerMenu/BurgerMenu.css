@@ -19,7 +19,7 @@
     display: block;
   }
 
-  .burger-menu__btn_hidden {
+  .burger-menu__btn_close {
     background-image: url(../../images/close-btn.svg);
     z-index: 52;
   }

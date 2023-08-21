@@ -37,6 +37,7 @@ export function Login({ handleLogin }) {
           onChange={handleChange}
           required
         ></input>
+        <span className='form-input__error form-input__error_type_email'>Что-то пошло не так...</span>
         <label className="login__input-label">Пароль</label>
         <input
           type="password"
@@ -48,6 +49,7 @@ export function Login({ handleLogin }) {
           onChange={handleChange}
           required
         ></input>
+        <span className='form-input__error form-input__error_type_password'>Что-то пошло не так...</span>
         <button type="submit" className="login__button">
           Войти
         </button>

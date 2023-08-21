@@ -12,7 +12,7 @@ function SearchForm() {
                     name="movie"
                     placeholder="Фильм"
                     value=""
-                    autofocus
+                    autoFocus
                     required
                 ></input>
                 <button

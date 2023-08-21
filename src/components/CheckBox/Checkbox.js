@@ -5,7 +5,11 @@ function Checkbox() {
     const [isChecked, setIsChecked] = useState(false);
 
     const handleChange = () => {
-        setIsChecked(!isChecked);
+        if (isChecked === false) {
+            setIsChecked(true);
+        } else {
+            setIsChecked(false);
+        }
     };
 
     return (
@@ -19,8 +23,8 @@ function Checkbox() {
                     onChange={handleChange}
                 />
                 <span className="checkbox__visible"></span>
-                Короткометражки
             </label>
+            <p className='checkbox__text'>Короткометражки</p>
         </div>
     );
 }

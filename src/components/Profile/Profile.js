@@ -39,6 +39,7 @@ export function Profile({ handleLogin }) {
               placeholder="Имя"
               onChange={handleChange}
               required
+              disabled
             ></input>
           </label>
           <label className="profile__input-label">E-mail
@@ -52,10 +53,21 @@ export function Profile({ handleLogin }) {
               placeholder="email"
               onChange={handleChange}
               required
+              disabled
             ></input>
           </label>
-          <button type="button" className="profile__edit">Редактировать</button>
-          <Link className="profile__link" to="/">Выйти из аккаунта</Link>
+          <div className="profile__footer">
+            <div className="profile__footer-edit">
+              <button type="button" className="profile__edit">Редактировать</button>
+              <Link className="profile__link" to="/">Выйти из аккаунта</Link>
+            </div>
+            <div className="profile__footer-save">
+              <span className="profile__err-text">
+                При обновлении профиля произошла ошибка.
+              </span>
+              <button type="button" className="profile__save-btn" disabled>Сохранить</button>
+            </div>
+          </div>
         </form>
       </main>
     </>
