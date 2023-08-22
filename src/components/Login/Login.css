@@ -94,7 +94,7 @@
   font-weight: 400;
   line-height: normal;
   padding-top: 10px;
-  visibility: hidden;
+  display: none;
 }
 
 /* .login__input-error_type_password {

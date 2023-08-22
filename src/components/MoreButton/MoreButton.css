@@ -1,9 +1,11 @@
 .more-button {
-  margin: 62px auto 90px;
+  margin: 60px auto 90px;
   padding: 0;
+  background-color: transparent;
   display: block;
   border: none;
-  width: 100%;
+  max-width: 200px;
+  min-height: 16px;
   text-align: center;
   font-size: 12px;
   font-style: normal;

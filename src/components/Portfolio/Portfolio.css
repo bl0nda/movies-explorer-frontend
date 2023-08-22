@@ -20,11 +20,13 @@
   list-style: none;
 }
 
-/* .portfolio__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-} */
+.portfolio__item {
+ border-bottom: 1px #E8E8E8 solid;
+}
+
+.portfolio__item:last-child {
+  border-bottom: none;
+ }
 
 .portfolio__link {
   display: flex;
