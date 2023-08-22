@@ -176,6 +176,6 @@
   
   .about-me__avatar {
     max-width: 100%;
-    min-height: auto;
+    min-height: 352px;
 }
 }

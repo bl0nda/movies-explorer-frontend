@@ -1,4 +1,3 @@
-import './Movies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import MoreButton from '../MoreButton/MoreButton';
@@ -11,11 +10,11 @@ function Movies() {
     return (
         <>
             <Header />
-            <section className='movies'>
+            <main className='movies'>
                 <SearchForm />
                 <MoviesCardList movies={movies} />
                 <MoreButton />
-            </section>
+            </main>
             <Footer />
         </>
     )

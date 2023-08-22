@@ -23,7 +23,7 @@ export function Register({ handleRegister }) {
   };
 
   return (
-    <main className="main">
+    <section className="main">
       <form className="form-welcome" onSubmit={handleSubmit}>
         <Link to="/" className="form-welcome__logo"></Link>
         <h1 className="form-welcome__title">Добро пожаловать!</h1>
@@ -39,7 +39,7 @@ export function Register({ handleRegister }) {
           onChange={handleChange}
           required
         ></input>
-        <span className='form-input__error form-input__error_type_name'>Что-то пошло не так...</span>
+        <span className='form-welcome__input-error form-welcome__input-error_type_name'>Что-то пошло не так...</span>
         <label className="form-welcome__input-label">E-mail</label>
         <input
           type="email"
@@ -52,7 +52,7 @@ export function Register({ handleRegister }) {
           onChange={handleChange}
           required
         ></input>
-        <span className='form-input__error form-input__error_type_email'>Что-то пошло не так...</span>
+        <span className='form-welcome__input-error form-welcome__input-error_type_email'>Что-то пошло не так...</span>
         <label className="form-welcome__input-label">Пароль</label>
         <input
           type="password"
@@ -65,12 +65,12 @@ export function Register({ handleRegister }) {
           onChange={handleChange}
           required
         ></input>
-        <span className='form-input__error form-input__error_type_password'>Что-то пошло не так...</span>
+        <span className='form-welcome__input-error form-welcome__input-error_type_password'>Что-то пошло не так...</span>
         <button type="submit" className="form-welcome__button">
           Зарегистрироваться
         </button>
         <p className="form-welcome__link-text">Уже зарегистрированы? <Link className="form-welcome__link" to="/signin">Войти</Link></p>
       </form>
-    </main>
+    </section>
   );
 }

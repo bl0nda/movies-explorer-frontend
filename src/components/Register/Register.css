@@ -92,7 +92,7 @@
   opacity: 0.8;
 }
 
-.form-input__error {
+.form-welcome__input-error {
   color: #ee3465;
   font-size: 10px;
   font-weight: 400;
@@ -101,7 +101,7 @@
   display: none;
 }
 
-.form-input__error_type_password {
+.form-welcome__input-error_type_password {
   display: inline;
 }
 

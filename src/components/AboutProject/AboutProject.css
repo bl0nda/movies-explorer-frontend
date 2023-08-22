@@ -19,7 +19,7 @@
 
 .about-project__description-container {
   display: flex;
-  column-gap: 65px;
+  column-gap: 55px;
   padding-bottom: 110px;
 }
 
@@ -119,7 +119,7 @@
   }
 
   .about-project__description-container {
-    column-gap: 55px;
+    column-gap: 35px;
     padding-bottom: 95px;
   }
 

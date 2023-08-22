@@ -1,7 +1,7 @@
 import './BurgerMenu.css';
 
 function BurgerMenu({isOpen, onClick, onClose}) {
-    const burgerButton = `burger-menu__btn ${isOpen ? 'burger-menu__btn_close' : 'burger-menu__btn'}`;
+    const burgerButton = `header__burger-menu-btn ${isOpen ? 'header__burger-menu-btn_close' : 'header__burger-menu-btn'}`;
 
     return (
         <>

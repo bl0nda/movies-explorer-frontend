@@ -37,7 +37,7 @@
   content: "";
   position: absolute;
   cursor: pointer;
-  bottom: 4px;
+  bottom: 5px;
   left: 4px;
   width: 10px;
   height: 10px;
@@ -69,6 +69,10 @@
 }
 
 @media screen and (max-width: 450px) {
+  .checkbox {
+    padding-bottom: 50px;
+  }
+
   .checkbox__text {
     font-size: 11px;
     line-height: 1.64;

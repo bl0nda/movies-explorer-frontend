@@ -82,7 +82,7 @@
 
   .techs__container {
     column-gap: 10px;
-    padding: 0 0 90px 15px;
+    padding: 0 0 90px;
   }
 
   .techs__obj {

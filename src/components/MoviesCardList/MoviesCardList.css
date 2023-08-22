@@ -4,6 +4,7 @@
   max-width: calc(100% - 70px*2);
   margin: 0 auto;
   padding: 70px 0 30px;
+  box-sizing: border-box;
 }
 
 .movies-card-list__container {
@@ -38,6 +39,6 @@
   .movies-card-list__container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
   }
 }

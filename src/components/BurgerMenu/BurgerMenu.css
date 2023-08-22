@@ -1,4 +1,4 @@
-.burger-menu__btn {
+.header__burger-menu-btn {
   background-image: url(../../images/burger-icon.svg);
   width: 44px;
   height: 44px;
@@ -15,11 +15,11 @@
 }
 
 @media screen and (max-width: 805px) {
-  .burger-menu__btn {
+  .header__burger-menu-btn {
     display: block;
   }
 
-  .burger-menu__btn_close {
+  .header__burger-menu-btn_close {
     background-image: url(../../images/close-btn.svg);
     z-index: 52;
   }

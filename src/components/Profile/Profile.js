@@ -25,7 +25,7 @@ export function Profile({ handleLogin }) {
   return (
     <>
       <Header />
-      <main className="main">
+      <section className="main">
         <form className="profile" onSubmit={handleSubmit}>
           <h1 className="profile__title">Привет, {formValue.name}!</h1>
           <label className="profile__input-label">Имя
@@ -69,7 +69,7 @@ export function Profile({ handleLogin }) {
             </div>
           </div>
         </form>
-      </main>
+      </section>
     </>
   );
 }

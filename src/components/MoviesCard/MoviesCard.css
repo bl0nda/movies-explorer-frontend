@@ -49,6 +49,7 @@
   padding: 0;
   margin-right: 14px;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .movie__button_type_save {

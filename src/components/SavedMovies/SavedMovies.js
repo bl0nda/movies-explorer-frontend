@@ -1,4 +1,3 @@
-import './SavedMovies.css';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import Header from '../Header/Header';
@@ -9,10 +8,10 @@ function Movies() {
     return (
         <>
             <Header />
-            <section className='movies'>
+            <main className='movies'>
                 <SearchForm />
                 <MoviesCardList movies={movies.filter((movie) => movie.saved === true)} />
-            </section>
+            </main>
             <Footer />
         </>
     )
