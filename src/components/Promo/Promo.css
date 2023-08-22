@@ -1,0 +1,125 @@
+.promo {
+  background-color: #465dff;
+}
+
+.promo__container {
+  max-width: calc(100% - 70px * 2);
+  margin: 0 auto;
+  padding: 75px 0;
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.promo__description {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+}
+
+.promo__title {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.16;
+  margin: 0;
+  padding-bottom: 36px;
+}
+
+.promo__subtitle {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.5;
+  margin: 0;
+  padding-bottom: 146px;
+  max-width: 310px;
+}
+
+.promo__logo {
+  width: 310px;
+  height: 304px;
+  background-image: url(../../images/promo-logo.svg);
+  background-size: cover;
+  background-position: center;
+}
+
+.promo__btn {
+  width: 129px;
+  height: 36px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: transparent;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.33;
+  cursor: pointer;
+  transition: opacity .3s ease-in-out;
+}
+
+.promo__btn:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 805px) {
+  .promo__container {
+    max-width: calc(100% - 44px * 2);
+    padding: 140px 0 76px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .promo__description {
+    max-width: 680px;
+    align-items: center;
+  }
+
+  .promo__title {
+    font-size: 40px;
+    line-height: 1.25;
+    padding-bottom: 22px;
+    text-align: center;
+  }
+
+  .promo__subtitle {
+    padding-bottom: 92px;
+    max-width: 260px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .promo__container {
+    max-width: calc(100% - 8px * 2);
+    padding: 70px 0 30px;
+    gap: 44px;
+  }
+
+  .promo__description {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .promo__title {
+    font-size: 30px;
+    line-height: 1.27;
+    padding-bottom: 24px;
+    letter-spacing: -1.2px;
+  }
+
+  .promo__subtitle {
+    padding-bottom: 80px;
+  }
+
+  .promo__logo {
+    width: 210px;
+    height: 206px;
+  }
+}

@@ -1,0 +1,156 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  max-width: 410px;
+  margin: 0 auto;
+}
+
+.profile__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: normal;
+  margin: 0 auto;
+  padding: 74px 0 123px;
+}
+
+.profile__input-label {
+  color: #000;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 34px;
+}
+
+.profile__input-label:last-child {
+  margin-bottom: 0;
+}
+
+.profile__input {
+  max-width: 122px;
+  height: 14px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  line-height: normal;
+  font-weight: 400;
+  color: #000;
+  text-align: right;
+  background-color: transparent;
+}
+
+.profile__link {
+  color: #ee3465;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__link:hover {
+  opacity: 0.7;
+}
+
+.profile__footer-edit {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__edit {
+  color: #000;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  margin: 186px 0 16px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__edit:hover {
+  opacity: 0.7;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.profile__footer-save {
+  display: none;
+  flex-direction: column;
+  padding-top: 189px;
+}
+
+.profile__save-btn {
+  width: 100%;
+  min-height: 45px;
+  margin-top: 20px;
+  background-color: #3456F3;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: normal;
+  transition: opacity .3s ease-in-out;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+}
+
+.profile__save-btn:hover {
+  opacity: 0.8;
+}
+
+.profile__save-btn:disabled {
+  color: #C2C2C2;
+  background: #F8F8F8;
+}
+
+.profile__err-text {
+  font-size: 11px;
+  line-height: normal;
+  color: #FF004C;
+  text-align: center;
+}
+
+@media screen and (max-width: 805px) {
+  .profile__title {
+    padding: 236px 0 96px;
+  }
+
+  .profile__edit {
+    margin: 176px 0 16px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile {
+    max-width: calc(100% - 30px * 2);
+  }
+
+  .profile__title {
+    text-align: center;
+    padding: 70px 0 80px;
+  }
+
+  .profile__link {
+    font-size: 12px;
+    padding-bottom: 40px;
+  }
+
+  .profile__edit {
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    margin: 345px 0 16px;
+  }
+}

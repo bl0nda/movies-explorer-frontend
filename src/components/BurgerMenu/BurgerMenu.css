@@ -1,0 +1,26 @@
+.header__burger-menu-btn {
+  background-image: url(../../images/burger-icon.svg);
+  width: 44px;
+  height: 44px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 805px) {
+  .header__burger-menu-btn {
+    display: block;
+  }
+
+  .header__burger-menu-btn_close {
+    background-image: url(../../images/close-btn.svg);
+    z-index: 52;
+  }
+}
