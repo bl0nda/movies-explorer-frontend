@@ -92,17 +92,19 @@
   opacity: 0.8;
 }
 
+.form-welcome__button:disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
+  cursor: auto;
+  opacity: 1;
+}
+
 .form-welcome__input-error {
   color: #ee3465;
   font-size: 10px;
   font-weight: 400;
   line-height: normal;
   padding-top: 10px;
-  display: none;
-}
-
-.form-welcome__input-error_type_password {
-  display: inline;
 }
 
 @media screen and (max-width: 450px) {

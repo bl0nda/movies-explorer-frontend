@@ -1,24 +1,15 @@
 import "./Login.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {useFormWithValidation} from '../../utils/validate';
 
 export function Login({ handleLogin }) {
-  const [formValue, setFormValue] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValue({
-      ...formValue,
-      [name]: value,
-    });
-  };
+  const { values, handleChange, errors, isValid, resetForm } =
+  useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(formValue.email, formValue.password)
+    handleLogin(values.email, values.password)
   };
 
   return (
@@ -37,7 +28,7 @@ export function Login({ handleLogin }) {
           onChange={handleChange}
           required
         ></input>
-        <span className='login__input-error login__input-error_type_email'>Что-то пошло не так...</span>
+        <span className='login__input-error login__input-error_type_email'>{errors.email}</span>
         <label className="login__input-label">Пароль</label>
         <input
           type="password"
@@ -49,8 +40,11 @@ export function Login({ handleLogin }) {
           onChange={handleChange}
           required
         ></input>
-        <span className='login__input-error login__input-error_type_password'>Что-то пошло не так...</span>
-        <button type="submit" className="login__button">
+        <span className='login__input-error login__input-error_type_password'>{errors.password}</span>
+        <button 
+        type="submit" 
+        className="login__button"
+        disabled={!isValid}>
           Войти
         </button>
         <p className="login__link-text">Ещё не зарегистрированы? <Link className="login__link" to="/signup">Регистрация</Link></p>

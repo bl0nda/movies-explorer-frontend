@@ -88,18 +88,20 @@
   opacity: 0.8;
 }
 
+.login__button:disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
+  cursor: auto;
+  opacity: 1;
+}
+
 .login__input-error {
   color: #ee3465;
   font-size: 10px;
   font-weight: 400;
   line-height: normal;
   padding-top: 10px;
-  display: none;
 }
-
-/* .login__input-error_type_password {
-display: inline;
-} */
 
 @media screen and (max-width: 450px) {
   .login {
