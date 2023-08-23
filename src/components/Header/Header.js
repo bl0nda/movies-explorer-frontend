@@ -6,7 +6,7 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 function Header() {
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 

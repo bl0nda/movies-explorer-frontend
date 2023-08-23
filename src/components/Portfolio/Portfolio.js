@@ -14,7 +14,7 @@ function Portfolio() {
                         </Link>
                     </li>
                     <li className='portfolio__item'>
-                        <Link className='portfolio__link' to="" target='_blank'>
+                        <Link className='portfolio__link' to="//bl0nda.github.io/dianak.russian-travel/" target='_blank'>
                             <h3 className='portfolio__link-title'>Адаптивный сайт</h3>
                             <div className='portfolio__link-icon'></div>
                         </Link>

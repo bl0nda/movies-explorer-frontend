@@ -10,14 +10,19 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Page404 from '../Page404/Page404';
 import * as auth from "../../utils/auth";
 import mainApi from "../../utils/MainApi";
+import moviesApi from "../../utils/MoviesApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
-import ProtectedRouteElement from "./ProtectedRoute/ProtectedRoute.js";
+import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute.js";
 
 function App() {
-
+  const [currentUser, setCurrentUser] = useState({
+    name: "",
+    email: "",
+  });
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState("");
   const navigate = useNavigate();
+  const [movies, setMovies] = useState([]);
 
   const handleLogin = (email, password) => {
     auth
@@ -38,7 +43,7 @@ function App() {
       .register(name, email, password)
       .then((res) => {
         console.log(res);
-        navigate("/signin", { replace: true });
+        navigate("/movies", { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -68,34 +73,81 @@ function App() {
     tokenCheck();
   }, []);
 
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     api
-  //       .getProfileData()
-  //       .then((res) => {
-  //         setCurrentUser(res);
-  //       })
-  //       .catch((err) => console.log(err));
-  //     api
-  //       .getInitialCards()
-  //       .then((res) => {
-  //         setCards(res);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  // }, [loggedIn]);
+  useEffect(() => {
+    if (loggedIn) {
+      // api
+      //   .getProfileData()
+      //   .then((res) => {
+      //     setCurrentUser(res);
+      //   })
+      //   .catch((err) => console.log(err));
+      moviesApi
+        .getMovies()
+        .then((res) => {
+          setMovies(res);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [loggedIn]);
 
   return (
     <div className='page'>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="*" element={<Page404 />} />
-      </Routes>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route
+            path="/signup"
+            element={<Register handleRegister={handleRegister} />}
+          />
+          <Route
+            path="/signin"
+            element={<Login handleLogin={handleLogin} />}
+          />
+          <Route path="/movies" element={
+            <ProtectedRouteElement
+              element={Movies}
+              // onEditProfile={handleEditProfileClick}
+              // onAddPlace={handleAddPlaceClick}
+              // onEditAvatar={handleEditAvatarClick}
+              // onClose={closeAllPopups}
+              // onCardClick={handleCardClick}
+              // onCardLike={handleCardLike}
+              // onCardDelete={handleCardDelete}
+              // cards={cards}
+              loggedIn={loggedIn}
+            />
+          } />
+          <Route path="/saved-movies" element={
+            <ProtectedRouteElement
+              element={SavedMovies}
+              // onEditProfile={handleEditProfileClick}
+              // onAddPlace={handleAddPlaceClick}
+              // onEditAvatar={handleEditAvatarClick}
+              // onClose={closeAllPopups}
+              // onCardClick={handleCardClick}
+              // onCardLike={handleCardLike}
+              // onCardDelete={handleCardDelete}
+              // cards={cards}
+              loggedIn={loggedIn}
+            />
+          } />
+          <Route path="/profile" element={
+            <ProtectedRouteElement
+              element={Profile}
+              // onEditProfile={handleEditProfileClick}
+              // onAddPlace={handleAddPlaceClick}
+              // onEditAvatar={handleEditAvatarClick}
+              // onClose={closeAllPopups}
+              // onCardClick={handleCardClick}
+              // onCardLike={handleCardLike}
+              // onCardDelete={handleCardDelete}
+              // cards={cards}
+              loggedIn={loggedIn}
+            />
+          } />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </CurrentUserContext.Provider>
     </div>
   );
 }
