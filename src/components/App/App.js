@@ -8,9 +8,9 @@ import { Profile } from '../Profile/Profile';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Page404 from '../Page404/Page404';
-import * as auth from "../utils/auth";
+import * as auth from "../../utils/auth";
 import mainApi from "../../utils/MainApi";
-import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import ProtectedRouteElement from "./ProtectedRoute/ProtectedRoute.js";
 
 function App() {
