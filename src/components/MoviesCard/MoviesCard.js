@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import './MoviesCard.css';
 
 function MoviesCard(props) {
@@ -13,12 +13,14 @@ function MoviesCard(props) {
                 </div>
                 <button type="button"
                     className={location.pathname === "/movies"
-                    ? "movie__button movie__button_type_save"
-                    : "movie__button movie__button_type_delete"}
-                    >
+                        ? "movie__button movie__button_type_save"
+                        : "movie__button movie__button_type_delete"}
+                >
                 </button>
             </div>
-            <img className='movie__thumbnail' alt="постер фильма" src={props.movie.thumbnail} />
+            <NavLink to={props.movie.trailerLink.replace('https:', '')} target='_blank' className="movie__treiler">
+                <img className='movie__thumbnail' alt="постер фильма" src={`https://api.nomoreparties.co${props.movie.image.url}`} />
+            </NavLink>
         </div>
     );
 }

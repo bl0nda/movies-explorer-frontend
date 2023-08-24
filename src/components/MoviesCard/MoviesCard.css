@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+.movie_hidden {
+  display: none;
+}
+
 .movie__header {
   max-width: 100%;
   min-height: 68px;

@@ -20,7 +20,6 @@ function App() {
     email: "",
   });
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState("");
   const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
 
@@ -30,7 +29,6 @@ function App() {
       .then((res) => {
         localStorage.setItem("token", res.token);
         setLoggedIn(true);
-        setUserData(email);
         navigate("/movies");
       })
       .catch((err) => {
@@ -41,9 +39,8 @@ function App() {
   const handleRegister = (name, email, password) => {
     return auth
       .register(name, email, password)
-      .then((res) => {
-        console.log(res);
-        navigate("/movies", { replace: true });
+      .then(() => {
+        handleLogin(email, password);
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +56,6 @@ function App() {
           if (res) {
             const email = res.data.email;
             setLoggedIn(true);
-            setUserData(email);
             navigate("/movies");
           } else {
             setLoggedIn(false);
@@ -113,7 +109,7 @@ function App() {
               // onCardClick={handleCardClick}
               // onCardLike={handleCardLike}
               // onCardDelete={handleCardDelete}
-              // cards={cards}
+              movies={movies}
               loggedIn={loggedIn}
             />
           } />
