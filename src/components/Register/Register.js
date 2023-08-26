@@ -24,6 +24,7 @@ export function Register({ handleRegister }) {
           minLength="2"
           maxLength="40"
           placeholder='Имя'
+          pattern='/^[a-zA-Zа-яА-я-\ ]'
           value={values.name}
           onChange={handleChange}
           required
@@ -37,6 +38,7 @@ export function Register({ handleRegister }) {
           minLength="2"
           maxLength="30"
           placeholder='email'
+          pattern='/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/'
           value={values.email}
           onChange={handleChange}
           required

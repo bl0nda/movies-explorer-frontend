@@ -54,9 +54,9 @@ function App() {
         .getContent(token)
         .then((res) => {
           if (res) {
-            const email = res.data.email;
+            setCurrentUser(res);  
             setLoggedIn(true);
-            navigate("/movies");
+            navigate("/movies", { replace: true });
           } else {
             setLoggedIn(false);
           }
@@ -71,12 +71,6 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      // api
-      //   .getProfileData()
-      //   .then((res) => {
-      //     setCurrentUser(res);
-      //   })
-      //   .catch((err) => console.log(err));
       moviesApi
         .getMovies()
         .then((res) => {
@@ -86,11 +80,25 @@ function App() {
     }
   }, [loggedIn]);
 
+  function editProfileData(data) {
+    mainApi
+      .editProfile(data)
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function signOut() {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+  }
+
   return (
     <div className='page'>
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main loggedIn={loggedIn} />} />
           <Route
             path="/signup"
             element={<Register handleRegister={handleRegister} />}
@@ -123,21 +131,15 @@ function App() {
               // onCardClick={handleCardClick}
               // onCardLike={handleCardLike}
               // onCardDelete={handleCardDelete}
-              // cards={cards}
+              movies={movies}
               loggedIn={loggedIn}
             />
           } />
           <Route path="/profile" element={
             <ProtectedRouteElement
               element={Profile}
-              // onEditProfile={handleEditProfileClick}
-              // onAddPlace={handleAddPlaceClick}
-              // onEditAvatar={handleEditAvatarClick}
-              // onClose={closeAllPopups}
-              // onCardClick={handleCardClick}
-              // onCardLike={handleCardLike}
-              // onCardDelete={handleCardDelete}
-              // cards={cards}
+              onEditProfile={editProfileData}
+              signOut={signOut}
               loggedIn={loggedIn}
             />
           } />

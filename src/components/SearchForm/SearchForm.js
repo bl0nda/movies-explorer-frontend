@@ -1,7 +1,8 @@
+// import { useState } from "react";
 import './SearchForm.css';
 import Checkbox from '../CheckBox/Checkbox';
 
-function SearchForm() {
+function SearchForm({searchQuery, onChange, handleSearch}) {
     return (
         <section className='search'>
             <form className='search__form'>
@@ -12,13 +13,14 @@ function SearchForm() {
                         className="search__field"
                         name="movie"
                         placeholder="Фильм"
-                        value=""
-                        autoFocus
+                        value={searchQuery}
+                        onChange={onChange}
                         required
                     ></input>
                     <button
                         className='search__btn'
-                        type="submit"
+                        type="button"
+                        onClick={handleSearch}
                     ></button>
                 </div>
             </form>
