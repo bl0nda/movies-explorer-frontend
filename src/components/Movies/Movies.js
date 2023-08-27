@@ -1,3 +1,4 @@
+import './Movies.css';
 import { useState, useEffect } from 'react';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
@@ -12,6 +13,7 @@ function Movies({ movies, loggedIn }) {
     const [isNumberOfMoviesShown, setIsNumberOfMoviesShown] = useState(12);
     const [rowCount, setRowCount] = useState(4);
     const [isLoading, setIsLoading] = useState(false);
+    const [isSearchSuccess, setIsSearchSuccess] = useState(true);
 
     const loadMore = () => {
         setRowCount(rowCount + 1);
@@ -27,11 +29,13 @@ function Movies({ movies, loggedIn }) {
 
     const handleSearch = () => {
         setIsLoading(true);
+        setIsSearchSuccess(false);
         setTimeout(() => {
             const results = movies.filter((movie) =>
                 movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase())
             );
             setSearchResults(results);
+            setIsSearchSuccess(results.length > 0);
             setIsLoading(false);
         }, 2000);
     };
@@ -49,11 +53,11 @@ function Movies({ movies, loggedIn }) {
             <main className='movies'>
                 <SearchForm onChange={handleSearchQueryChange} searchQuery={searchQuery} handleSearch={handleSearch} />
                 {isLoading ? <Preloader />
-                    : (<div className='movies__main-content'>
+                    : isSearchSuccess ? (<div className='movies__main-content'>
                         <MoviesCardList movies={searchResults} />
                         <MoreButton isShown={isMoreBtnShown} loadMore={loadMore} />
                     </div>
-                    )
+                    ) : <p className='movies__not-found'>Ничего не найдено</p>
                 }
             </main>
             <Footer />
