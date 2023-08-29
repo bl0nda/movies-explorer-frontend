@@ -12,9 +12,13 @@ class MainApi {
   }
 
   editProfile(data) {
-    return fetch(`${this._url}/profile`, {
+    const token = localStorage.getItem('token');
+    return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({
         name: data.name,
         email: data.email,

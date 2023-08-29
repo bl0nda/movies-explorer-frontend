@@ -42,10 +42,6 @@
   background-color: transparent;
 }
 
-.profile__input:focus {
-  outline: none;
-}
-
 .profile__link {
   color: #ee3465;
   text-align: center;
@@ -91,7 +87,7 @@
 }
 
 .profile__footer-save {
-  display: none;
+  display: flex;
   flex-direction: column;
   padding-top: 189px;
 }
@@ -124,6 +120,11 @@
   line-height: normal;
   color: #FF004C;
   text-align: center;
+  visibility: hidden;
+}
+
+.profile__err-text_active {
+  visibility: visible;
 }
 
 @media screen and (max-width: 805px) {

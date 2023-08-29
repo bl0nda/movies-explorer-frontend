@@ -55,17 +55,17 @@ function Movies({ movies, loggedIn, savedMovie, onMovieSave, onMovieDelete }) {
         }, 2000);
     };
 
-    // const handleChangeBtn = () => {
-    //     if (searchResults.length === length) {
-    //         setIsMoreBtnShown(false);
-    //     } else {
-    //         setIsMoreBtnShown(true);
-    //     }
-    // };
+    const handleChangeBtn = () => {
+        if (searchResults.length > isNumberOfMoviesShown) {
+            setIsMoreBtnShown(true);
+        } else {
+            setIsMoreBtnShown(false);
+        }
+    };
 
     const loadMore = () => {
         setIsNumberOfMoviesShown(isNumberOfMoviesShown + isNumberToAddMovies);
-        // handleChangeBtn();
+        handleChangeBtn();
     };
 
     useEffect(() => {

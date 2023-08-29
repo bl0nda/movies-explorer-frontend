@@ -83,6 +83,16 @@ function App() {
     }
   }, [loggedIn]);
 
+ // получение списка сохраненных фильмов
+ const getSavedMovies = () => {
+  mainApi
+    .getSavedMovies()
+    .then((res) => {
+      setSavedMovies(res);
+    })
+    .catch((err) => console.log(err));
+}
+
   // сохранение фильма
   const handleSaveMovie = (movie) => {
     mainApi
@@ -149,14 +159,8 @@ function App() {
           <Route path="/saved-movies" element={
             <ProtectedRouteElement
               element={SavedMovies}
-              // onEditProfile={handleEditProfileClick}
-              // onAddPlace={handleAddPlaceClick}
-              // onEditAvatar={handleEditAvatarClick}
-              // onClose={closeAllPopups}
-              // onCardClick={handleCardClick}
-              // onCardLike={handleCardLike}
-              // onCardDelete={handleCardDelete}
-              movies={movies}
+              savedMovies={savedMovies}
+              onMovieDelete={handleDeleteMovie}
               loggedIn={loggedIn}
             />
           } />

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import './MoviesCard.css';
-import {movieURL} from '../../utils/constants';
+import { movieURL } from '../../utils/constants';
 
 function MoviesCard({ movie, savedMovie, onMovieSave, onMovieDelete }) {
     const location = useLocation();
@@ -42,7 +42,7 @@ function MoviesCard({ movie, savedMovie, onMovieSave, onMovieDelete }) {
         <div className='movie'>
             <div className='movie__header'>
                 <div className='movie__description'>
-                    <h2 className='movie__title'>{movie.nameRu}</h2>
+                    <h2 className='movie__title'>{movie.nameRU}</h2>
                     <p className='movie__duration'>{movieDuration(movie.duration)}</p>
                 </div>
                 {location.pathname === "/movies" &&
@@ -52,7 +52,8 @@ function MoviesCard({ movie, savedMovie, onMovieSave, onMovieDelete }) {
                     </button>}
                 {location.pathname === "/saved-movies" &&
                     <button type="button"
-                        className="movie__button movie__button_type_delete">
+                        className="movie__button movie__button_type_delete"
+                        onClick={onMovieDelete}>
                     </button>}
             </div>
             <NavLink to={movie.trailerLink.replace('https:', '')} target='_blank' className="movie__treiler">
