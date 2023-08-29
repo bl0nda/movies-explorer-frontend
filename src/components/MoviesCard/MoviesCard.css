@@ -7,10 +7,6 @@
   box-sizing: border-box;
 }
 
-.movie_hidden {
-  display: none;
-}
-
 .movie__header {
   max-width: 100%;
   min-height: 68px;
@@ -60,7 +56,7 @@
   background-image: url(../../images/save9d.svg);
 }
 
-.movie__button_type_save:active {
+.movie__button_type_save_active {
   background-image: url(../../images/save9_active.svg);
 }
 

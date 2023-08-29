@@ -22,38 +22,41 @@ class MainApi {
     }).then(this._getResult);
   }
 
-  getProfileData() {
-    return fetch(`${this._url}/profile`, {
+  // getProfileData() {
+  //   return fetch(`${this._url}/profile`, {
+  //     method: "GET",
+  //     headers: this._headers,
+  //   }).then(this._getResult);
+  // }
+
+  SaveMovie(data) {
+    const token = localStorage.getItem('token');
+    return fetch(`${this._url}/movies`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data)
+    }).then(this._getResult);
+  }
+
+  getSavedMovies() {
+    const token = localStorage.getItem('token');
+    return fetch(`${this._url}/movies`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
     }).then(this._getResult);
-  }
-
-  _setSaveMovie(movieId) {
-    return fetch(`${this._url}/movies/${movieId}/likes`, {
-      method: "PUT",
-      headers: this._headers
-    }).then(this._getResult);
-  }
-
-  _setUnsaveMovie(movieId) {
-    return fetch(`${this._url}/movies/${movieId}/likes`, {
-      method: 'DELETE',
-      headers: this._headers,
-    })
-      .then(this._getResult);
-  }
-
-  changeLikeCardStatus(movieId, isSaved) {
-    return isSaved ? this._setUnsaveMovie(movieId) : this._setSaveMovie(movieId)
   }
 
   deleteSavedMovie(movieId) {
     const token = localStorage.getItem('token');
-    return fetch(`${this._url}/saved-movies/${movieId}`, {
+    return fetch(`${this._url}/movies/${movieId}`, {
       method: 'DELETE',
       headers: {
-        "content-type": "application/json",
         authorization: `Bearer ${token}`,
       },
     })

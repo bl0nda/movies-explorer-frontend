@@ -2,7 +2,7 @@
 import './SearchForm.css';
 import Checkbox from '../CheckBox/Checkbox';
 
-function SearchForm({searchQuery, onChange, handleSearch}) {
+function SearchForm({searchQuery, onChange, handleSearch, isChecked, FilterShortsMovies}) {
     return (
         <section className='search'>
             <form className='search__form'>
@@ -24,7 +24,7 @@ function SearchForm({searchQuery, onChange, handleSearch}) {
                     ></button>
                 </div>
             </form>
-            <Checkbox />
+            <Checkbox isChecked={isChecked} onChange={FilterShortsMovies} />
         </section>
     );
 }

@@ -15,13 +15,15 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute.js";
 
 function App() {
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({
     name: "",
     email: "",
   });
   const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate();
+
   const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
 
   const handleLogin = (email, password) => {
     auth
@@ -54,7 +56,7 @@ function App() {
         .getContent(token)
         .then((res) => {
           if (res) {
-            setCurrentUser(res);  
+            setCurrentUser(res);
             setLoggedIn(true);
             navigate("/movies", { replace: true });
           } else {
@@ -69,6 +71,7 @@ function App() {
     tokenCheck();
   }, []);
 
+  // получение списка фильмов
   useEffect(() => {
     if (loggedIn) {
       moviesApi
@@ -80,6 +83,31 @@ function App() {
     }
   }, [loggedIn]);
 
+  // сохранение фильма
+  const handleSaveMovie = (movie) => {
+    mainApi
+      .SaveMovie(movie)
+      .then((res) => {
+        const updatedSavedMovies = [...savedMovies, { ...res, id: res.movieId }];
+        setSavedMovies(updatedSavedMovies);
+        localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
+      })
+      .catch((err) => console.log(err));
+  }
+
+  //удаление фильма
+  const handleDeleteMovie = (movie) => {
+    mainApi
+      .deleteSavedMovie(movie._id)
+      .then((res) => {
+        const updatedSavedMovies = savedMovies.filter(m => m._id !== movie._id)
+        setSavedMovies(updatedSavedMovies);
+        localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
+      })
+      .catch((err) => console.log(err));
+  }
+
+  //редактирование профиля
   function editProfileData(data) {
     mainApi
       .editProfile(data)
@@ -89,6 +117,7 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  //выход из аккаунта
   function signOut() {
     localStorage.removeItem("token");
     setLoggedIn(false);
@@ -110,13 +139,9 @@ function App() {
           <Route path="/movies" element={
             <ProtectedRouteElement
               element={Movies}
-              // onEditProfile={handleEditProfileClick}
-              // onAddPlace={handleAddPlaceClick}
-              // onEditAvatar={handleEditAvatarClick}
-              // onClose={closeAllPopups}
-              // onCardClick={handleCardClick}
-              // onCardLike={handleCardLike}
-              // onCardDelete={handleCardDelete}
+              onMovieSave={handleSaveMovie}
+              savedMovie={savedMovies}
+              onMovieDelete={handleDeleteMovie}
               movies={movies}
               loggedIn={loggedIn}
             />

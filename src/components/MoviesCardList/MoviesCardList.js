@@ -1,12 +1,12 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ movies }) {
+function MoviesCardList({ movies, savedMovie, onMovieSave, onMovieDelete }) {
     return (
         <section className='movies-card-list'>
             <div className='movies-card-list__container'>
                 {movies.map((movie) =>
-                    <MoviesCard key={movie.movieId} movie={movie} />)}
+                    <MoviesCard key={movie.movieId} movie={movie} savedMovie={savedMovie} onMovieSave={onMovieSave} onMovieDelete={onMovieDelete} />)}
             </div>
         </section>
     );
