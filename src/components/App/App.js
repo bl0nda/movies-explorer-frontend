@@ -13,6 +13,7 @@ import mainApi from "../../utils/MainApi";
 import moviesApi from "../../utils/MoviesApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute.js";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function App() {
   const navigate = useNavigate();
@@ -25,6 +26,11 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
 
+  const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
+  const [statusInfoTooltip, setStatusInfoTooltip] = useState(false);
+
+  const [error, setError] = useState("");
+
   const handleLogin = (email, password) => {
     auth
       .authorize(email, password)
@@ -35,6 +41,15 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        if (err === 'Ошибка: 401') {
+          setError('Неправильный логин или пароль');
+        }
+        if (err === 'Ошибка: 500') {
+          setError('На сервере произошла ошибка');
+        }
+        else {
+          setError('При авторизации пользователя произошла ошибка');
+        }
       });
   };
 
@@ -46,6 +61,13 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        if (err === 'Ошибка: 409') {
+          setError('Пользователь с таким email уже существует');
+        } else if (err === 'Ошибка: 500') {
+          setError('На сервере произошла ошибка');
+        } else {
+          setError('При регистрации пользователя произошла ошибка');
+        }
       })
   };
 
@@ -71,6 +93,16 @@ function App() {
     tokenCheck();
   }, []);
 
+  // получение списка сохраненных фильмов
+  const getSavedMovies = () => {
+    mainApi
+      .getSavedMovies()
+      .then((res) => {
+        setSavedMovies(res);
+      })
+      .catch((err) => console.log(err));
+  }
+
   // получение списка фильмов
   useEffect(() => {
     if (loggedIn) {
@@ -80,27 +112,18 @@ function App() {
           setMovies(res);
         })
         .catch((err) => console.log(err));
+      getSavedMovies();
     }
   }, [loggedIn]);
 
- // получение списка сохраненных фильмов
- const getSavedMovies = () => {
-  mainApi
-    .getSavedMovies()
-    .then((res) => {
-      setSavedMovies(res);
-    })
-    .catch((err) => console.log(err));
-}
+
 
   // сохранение фильма
   const handleSaveMovie = (movie) => {
     mainApi
       .SaveMovie(movie)
       .then((res) => {
-        const updatedSavedMovies = [...savedMovies, { ...res, id: res.movieId }];
-        setSavedMovies(updatedSavedMovies);
-        localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
+        getSavedMovies();
       })
       .catch((err) => console.log(err));
   }
@@ -108,11 +131,9 @@ function App() {
   //удаление фильма
   const handleDeleteMovie = (movie) => {
     mainApi
-      .deleteSavedMovie(movie._id)
+      .deleteSavedMovie(movie.movieId || movie.id)
       .then((res) => {
-        const updatedSavedMovies = savedMovies.filter(m => m._id !== movie._id)
-        setSavedMovies(updatedSavedMovies);
-        localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
+        getSavedMovies();
       })
       .catch((err) => console.log(err));
   }
@@ -123,14 +144,28 @@ function App() {
       .editProfile(data)
       .then((res) => {
         setCurrentUser(res);
+        setStatusInfoTooltip(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        if (err) {
+          setError("При обновлении профиля произошла ошибка.");
+        }
+        setStatusInfoTooltip(false);
+      })
+      .finally(() => {
+        setIsInfoTooltipPopupOpen(true);
+      });
   }
 
   //выход из аккаунта
   function signOut() {
     localStorage.removeItem("token");
     setLoggedIn(false);
+  }
+
+  function closeAllPopups() {
+    setIsInfoTooltipPopupOpen(false);
   }
 
   return (
@@ -140,11 +175,11 @@ function App() {
           <Route path="/" element={<Main loggedIn={loggedIn} />} />
           <Route
             path="/signup"
-            element={<Register handleRegister={handleRegister} />}
+            element={<Register handleRegister={handleRegister} error={error} />}
           />
           <Route
             path="/signin"
-            element={<Login handleLogin={handleLogin} />}
+            element={<Login handleLogin={handleLogin} error={error} />}
           />
           <Route path="/movies" element={
             <ProtectedRouteElement
@@ -170,10 +205,16 @@ function App() {
               onEditProfile={editProfileData}
               signOut={signOut}
               loggedIn={loggedIn}
+              error={error}
             />
           } />
           <Route path="*" element={<Page404 />} />
         </Routes>
+        <InfoTooltip
+          isOpen={isInfoTooltipPopupOpen}
+          onClose={closeAllPopups}
+          status={statusInfoTooltip}
+        />
       </CurrentUserContext.Provider>
     </div>
   );

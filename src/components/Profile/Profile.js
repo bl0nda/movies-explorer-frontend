@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import { useFormWithValidation } from "../../utils/validate";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-export function Profile({ loggedIn, onEditProfile, signOut }) {
+export function Profile({ loggedIn, onEditProfile, signOut, error }) {
 
   const currentUser = useContext(CurrentUserContext);
   const { values, setValues, handleChange, errors, isValid, resetForm } =
@@ -27,7 +27,7 @@ export function Profile({ loggedIn, onEditProfile, signOut }) {
   }
 
   useEffect(() => {
-    if ((values.name !== currentUser.name) || (values.email !== currentUser.email))
+    if ((values.name !== currentUser.name || values.email !== currentUser.email) && isValid)
       setIsModifiedData(true);
     else
       setIsModifiedData(false);
@@ -61,6 +61,7 @@ export function Profile({ loggedIn, onEditProfile, signOut }) {
               disabled={isDisabledInput}
             ></input>
           </label>
+          <span className='profile__input-error'>{errors.name}</span>
           <label className="profile__input-label">E-mail
             <input
               type="email"
@@ -75,6 +76,7 @@ export function Profile({ loggedIn, onEditProfile, signOut }) {
               disabled={isDisabledInput}
             ></input>
           </label>
+          <span className='profile__input-error'>{errors.email}</span>
           <div className="profile__footer">
             {isDisabledInput ? (
               <>
@@ -92,7 +94,7 @@ export function Profile({ loggedIn, onEditProfile, signOut }) {
               <>
                 <div className="profile__footer-save">
                   <span className={`profile__err-text ${!isValid ? "profile__err-text_active" : "profile__err-text"}`}>
-                    При обновлении профиля произошла ошибка.
+                  {error}
                   </span>
                   <button
                     type="submit"

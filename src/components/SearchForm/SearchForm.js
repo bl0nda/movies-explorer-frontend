@@ -1,8 +1,11 @@
 // import { useState } from "react";
 import './SearchForm.css';
 import Checkbox from '../CheckBox/Checkbox';
+import { useFormWithValidation } from '../../utils/validate';
 
-function SearchForm({searchQuery, onChange, handleSearch, isChecked, FilterShortsMovies}) {
+function SearchForm({ searchQuery, onChange, handleSearch, isChecked, onCheckboxUpdated }) {
+    const { values, handleChange, errors, isValid, setIsValid, resetForm } = useFormWithValidation();
+
     return (
         <section className='search'>
             <form className='search__form'>
@@ -23,8 +26,15 @@ function SearchForm({searchQuery, onChange, handleSearch, isChecked, FilterShort
                         onClick={handleSearch}
                     ></button>
                 </div>
+                <span
+                    className={errors.movie
+                        ? "search__field-error search__field-error_active"
+                        : "search__field-error"
+                    }>
+                    Нужно ввести ключевое слово
+                </span>
             </form>
-            <Checkbox isChecked={isChecked} onChange={FilterShortsMovies} />
+            <Checkbox isChecked={isChecked} onChange={onCheckboxUpdated} />
         </section>
     );
 }

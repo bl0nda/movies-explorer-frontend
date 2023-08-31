@@ -2,13 +2,14 @@ import './Register.css';
 import { Link } from "react-router-dom";
 import {useFormWithValidation} from '../../utils/validate';
 
-export function Register({ handleRegister }) {
+export function Register({ handleRegister, error }) {
   const { values, handleChange, errors, isValid, resetForm } =
   useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleRegister(values.name, values.email, values.password);
+    resetForm();
   };
 
   return (
@@ -24,12 +25,12 @@ export function Register({ handleRegister }) {
           minLength="2"
           maxLength="40"
           placeholder='Имя'
-          pattern='/^[a-zA-Zа-яА-я-\ ]'
+          pattern='^[a-zA-Zа-яА-я-\ ]'
           value={values.name}
           onChange={handleChange}
           required
         ></input>
-        <span className='form-welcome__input-error form-welcome__input-error_type_name'>{errors.name}</span>
+        <span className='form-welcome__input-error'>{errors.name}</span>
         <label className="form-welcome__input-label">E-mail</label>
         <input
           type="email"
@@ -38,12 +39,12 @@ export function Register({ handleRegister }) {
           minLength="2"
           maxLength="30"
           placeholder='email'
-          pattern='/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/'
+          pattern='^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+'
           value={values.email}
           onChange={handleChange}
           required
         ></input>
-        <span className='form-welcome__input-error form-welcome__input-error_type_email'>{errors.email}</span>
+        <span className='form-welcome__input-error'>{errors.email}</span>
         <label className="form-welcome__input-label">Пароль</label>
         <input
           type="password"
@@ -57,6 +58,7 @@ export function Register({ handleRegister }) {
           required
         ></input>
         <span className='form-welcome__input-error form-welcome__input-error_type_password'>{errors.password}</span>
+        <p className="form-welcome__server-error">{error}</p>
         <button 
         type="submit" 
         className="form-welcome__button"

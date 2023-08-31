@@ -6,7 +6,7 @@ function MoviesCardList({ movies, savedMovie, onMovieSave, onMovieDelete }) {
         <section className='movies-card-list'>
             <div className='movies-card-list__container'>
                 {movies.map((movie) =>
-                    <MoviesCard key={movie.movieId} movie={movie} savedMovie={savedMovie} onMovieSave={onMovieSave} onMovieDelete={onMovieDelete} />)}
+                    <MoviesCard key={movie.id} movie={movie} savedMovie={savedMovie} onMovieSave={onMovieSave} onMovieDelete={onMovieDelete} />)}
             </div>
         </section>
     );

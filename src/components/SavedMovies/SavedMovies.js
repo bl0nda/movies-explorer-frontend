@@ -9,7 +9,7 @@ function SavedMovies({savedMovies, loggedIn, onMovieDelete}) {
             <Header loggedIn={loggedIn} />
             <main className='movies'>
                 <SearchForm />
-                <MoviesCardList movies={savedMovies} onMovieDelete={onMovieDelete} />
+                <MoviesCardList movies={savedMovies} savedMovie={savedMovies} onMovieDelete={onMovieDelete} />
             </main>
             <Footer />
         </>

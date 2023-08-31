@@ -127,6 +127,14 @@
   visibility: visible;
 }
 
+.profile__input-error {
+  color: #ee3465;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 10px;
+}
+
 @media screen and (max-width: 805px) {
   .profile__title {
     padding: 236px 0 96px;

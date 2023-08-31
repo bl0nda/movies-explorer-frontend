@@ -1,5 +1,4 @@
 import "./Login.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import {useFormWithValidation} from '../../utils/validate';
 
@@ -9,7 +8,8 @@ export function Login({ handleLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(values.email, values.password)
+    handleLogin(values.email, values.password);
+    resetForm();
   };
 
   return (
@@ -25,11 +25,11 @@ export function Login({ handleLogin }) {
           minLength="2"
           maxLength="30"
           placeholder="email"
-          pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/"
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+"
           onChange={handleChange}
           required
         ></input>
-        <span className='login__input-error login__input-error_type_email'>{errors.email}</span>
+        <span className='login__input-error'>{errors.email}</span>
         <label className="login__input-label">Пароль</label>
         <input
           type="password"
@@ -41,7 +41,7 @@ export function Login({ handleLogin }) {
           onChange={handleChange}
           required
         ></input>
-        <span className='login__input-error login__input-error_type_password'>{errors.password}</span>
+        <span className='login__input-error'>{errors.password}</span>
         <button 
         type="submit" 
         className="login__button"

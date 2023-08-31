@@ -13,47 +13,46 @@ function Movies({ movies, loggedIn, savedMovie, onMovieSave, onMovieDelete }) {
     const [isNumberOfMoviesShown, setIsNumberOfMoviesShown] = useState(12);
     const [isNumberToAddMovies, setIsNumberToAddMovies] = useState(3);
 
-    const [searchQuery, setSearchQuery] = useState('');
-    const [searchResults, setSearchResults] = useState(movies);
+    const [searchQuery, setSearchQuery] = useState(() => localStorage.getItem("searchQuery") || "");
+    const [searchResults, setSearchResults] = useState(() => JSON.parse(localStorage.getItem("searchResults")) || []);
+    const [searchResultsFiltered, setSearchResultsFiltered] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isSearchSuccess, setIsSearchSuccess] = useState(true);
 
     const handleSearchQueryChange = (event) => {
         const query = event.target.value;
         setSearchQuery(query);
+        localStorage.setItem("searchQuery", query);
     };
 
-    const [isChecked, setIsChecked] = useState(false);
-    // const [showShortMovies, setShowShortMovies] = useState(searchResults);
+    const [isChecked, setIsChecked] = useState(() => JSON.parse(localStorage.getItem("checkboxState")) || false);
 
-    // const FilterShortsMovies = (searchResults) => {
-    //     if (isChecked === false) {
-    //         setIsChecked(true);
-    //         setShowShortMovies(searchResults.filter((movie) => movie.duration <= 40));
-    //     } else {
-    //         setIsChecked(false);
-    //         setShowShortMovies();
-    //     }
-    // }
+    useEffect(() => {
+        if (isChecked) {
+            setSearchResultsFiltered(searchResults.filter((movie) => movie.duration <= 40));
+        } else {
+            setSearchResultsFiltered(searchResults);
+        }
+    }, [searchResults, isChecked]);
 
-    const handleSearch = (results) => {
+    const handleSearch = () => {
         setIsLoading(true);
         setIsSearchSuccess(false);
         setTimeout(() => {
             const results = movies.filter((movie) =>
                 movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase())
             );
-            // let results = showShortMovies;
-            // if (isChecked && showShortMovies) {
-            //     results = filteredResults.filter((movie) => movie.duration <= 40);
-            // } else {
-            //     results = filteredResults;
-            // }
             setSearchResults(results);
+            localStorage.setItem("searchResults", JSON.stringify(results));
             setIsSearchSuccess(results.length > 0);
             setIsLoading(false);
         }, 2000);
     };
+
+    const handleChecked = () => {
+        setIsChecked(!isChecked);
+        localStorage.setItem("checkboxState", JSON.stringify(isChecked));
+    }
 
     const handleChangeBtn = () => {
         if (searchResults.length > isNumberOfMoviesShown) {
@@ -65,7 +64,6 @@ function Movies({ movies, loggedIn, savedMovie, onMovieSave, onMovieDelete }) {
 
     const loadMore = () => {
         setIsNumberOfMoviesShown(isNumberOfMoviesShown + isNumberToAddMovies);
-        handleChangeBtn();
     };
 
     useEffect(() => {
@@ -93,14 +91,18 @@ function Movies({ movies, loggedIn, savedMovie, onMovieSave, onMovieDelete }) {
         };
     }, []);
 
-    const displayedMovies = searchResults.slice(0, isNumberOfMoviesShown);
+    const displayedMovies = searchResultsFiltered.slice(0, isNumberOfMoviesShown);
+
+    useEffect(() => {
+        handleChangeBtn();
+    }, [loadMore, handleSearch]);
 
     return (
         <>
             <Header loggedIn={loggedIn} />
             <main className='movies'>
                 <SearchForm onChange={handleSearchQueryChange} searchQuery={searchQuery} handleSearch={handleSearch}
-                    isChecked={isChecked} />
+                    isChecked={isChecked} onCheckboxUpdated={handleChecked} />
                 {isLoading ? <Preloader />
                     : isSearchSuccess ? (<div className='movies__main-content'>
                         <MoviesCardList movies={displayedMovies} savedMovie={savedMovie} onMovieSave={onMovieSave} onMovieDelete={onMovieDelete} />

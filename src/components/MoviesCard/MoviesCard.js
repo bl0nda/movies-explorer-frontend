@@ -12,11 +12,10 @@ function MoviesCard({ movie, savedMovie, onMovieSave, onMovieDelete }) {
         return duration.trim();
     };
 
-    const [isSaved, setIsSaved] = useState(false);
+    const isSaved = savedMovie.some(m => m.movieId === movie.id);
 
     function activeMovieSave() {
         if (!isSaved) {
-            setIsSaved(true);
             onMovieSave(
                 {
                     country: movie.country,
@@ -33,7 +32,6 @@ function MoviesCard({ movie, savedMovie, onMovieSave, onMovieDelete }) {
                 }
             );
         } else if (isSaved) {
-            setIsSaved(false);
             onMovieDelete(movie);
         }
     }
@@ -53,11 +51,11 @@ function MoviesCard({ movie, savedMovie, onMovieSave, onMovieDelete }) {
                 {location.pathname === "/saved-movies" &&
                     <button type="button"
                         className="movie__button movie__button_type_delete"
-                        onClick={onMovieDelete}>
+                        onClick={() => onMovieDelete(movie)}>
                     </button>}
             </div>
             <NavLink to={movie.trailerLink.replace('https:', '')} target='_blank' className="movie__treiler">
-                <img className='movie__thumbnail' alt="постер фильма" src={`${movieURL}${movie.image.url}`} />
+                <img className='movie__thumbnail' alt="постер фильма" src={movie.image.url ? `${movieURL}${movie.image.url}` : movie.image} />
             </NavLink>
         </div>
     );
