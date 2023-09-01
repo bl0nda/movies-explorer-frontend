@@ -1,14 +1,22 @@
-// import { useState } from "react";
+import { useState } from "react";
 import './SearchForm.css';
 import Checkbox from '../CheckBox/Checkbox';
-import { useFormWithValidation } from '../../utils/validate';
 
 function SearchForm({ searchQuery, onChange, handleSearch, isChecked, onCheckboxUpdated }) {
-    const { values, handleChange, errors, isValid, setIsValid, resetForm } = useFormWithValidation();
+    const [searchError, setSearchError] = useState("");
+
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        if (searchQuery === undefined || searchQuery === "") {
+            setSearchError('Нужно ввести ключевое слово');
+        }
+        handleSearch(searchQuery);
+    }
 
     return (
         <section className='search'>
-            <form className='search__form'>
+            <form className='search__form'
+                onSubmit={handleSubmit}>
                 <div className='search__container'>
                     <div className='search__icon'></div>
                     <input
@@ -22,18 +30,14 @@ function SearchForm({ searchQuery, onChange, handleSearch, isChecked, onCheckbox
                     ></input>
                     <button
                         className='search__btn'
-                        type="button"
-                        onClick={handleSearch}
+                        type="submit"
                     ></button>
                 </div>
-                <span
-                    className={errors.movie
-                        ? "search__field-error search__field-error_active"
-                        : "search__field-error"
-                    }>
-                    Нужно ввести ключевое слово
-                </span>
             </form>
+            <span
+                className="search__field-error">
+                Нужно ввести ключевое слово
+            </span>
             <Checkbox isChecked={isChecked} onChange={onCheckboxUpdated} />
         </section>
     );

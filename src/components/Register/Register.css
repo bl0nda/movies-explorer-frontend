@@ -107,6 +107,21 @@
   padding-top: 10px;
 }
 
+.form-welcome__server-error {
+    text-align: center;
+    color: #ee3465;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    min-height: 18px;
+    height: 100%;
+    margin-top: 70px;
+    display: block;
+    flex-wrap: wrap;
+    max-width: 390px;
+}
+
 @media screen and (max-width: 450px) {
   .form-welcome {
     max-width: 260px;

@@ -52,20 +52,12 @@
 }
 
 .search__field-error {
-  margin: 0;
-  padding: 0;
-  height: 30px;
-  width: 100%;
+  margin: 0 auto;
+  padding: 10px 0;
   text-align: center;
   color: #ff3055;
   font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
   line-height: normal;
-  visibility: hidden;
-}
-.search__field-error_active {
-  visibility: visible;
 }
 
 @media screen and (max-width: 805px) {
