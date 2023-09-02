@@ -9,14 +9,17 @@ function SearchForm({ searchQuery, onChange, handleSearch, isChecked, onCheckbox
         evt.preventDefault();
         if (searchQuery === undefined || searchQuery === "") {
             setSearchError('Нужно ввести ключевое слово');
+        } else {
+            handleSearch(searchQuery);
+            setSearchError("");
         }
-        handleSearch(searchQuery);
     }
 
     return (
         <section className='search'>
             <form className='search__form'
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}
+                noValidate>
                 <div className='search__container'>
                     <div className='search__icon'></div>
                     <input
@@ -34,10 +37,12 @@ function SearchForm({ searchQuery, onChange, handleSearch, isChecked, onCheckbox
                     ></button>
                 </div>
             </form>
-            <span
-                className="search__field-error">
-                Нужно ввести ключевое слово
-            </span>
+            <div className="search__span-container">
+                <span
+                    className="search__field-error">
+                    {searchError}
+                </span>
+            </div>
             <Checkbox isChecked={isChecked} onChange={onCheckboxUpdated} />
         </section>
     );

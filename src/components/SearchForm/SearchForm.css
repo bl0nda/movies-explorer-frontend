@@ -1,6 +1,6 @@
 .search__form {
   max-width: 100%;
-  padding: 70px 70px 30px 75px;
+  padding: 70px 70px 10px 75px;
   border: none;
   margin: 0 auto;
   box-sizing: border-box;
@@ -51,9 +51,16 @@
   opacity: 0.8;
 }
 
+.search__span-container {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 17px;
+}
+
 .search__field-error {
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 0;
   text-align: center;
   color: #ff3055;
   font-size: 13px;

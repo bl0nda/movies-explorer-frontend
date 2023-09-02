@@ -58,7 +58,7 @@ export function Register({ handleRegister, error }) {
           required
         ></input>
         <span className='form-welcome__input-error form-welcome__input-error_type_password'>{errors.password}</span>
-        <p className="form-welcome__server-error">{error}</p>
+        <p className="form-welcome__err-text">{error}</p>
         <button 
         type="submit" 
         className="form-welcome__button"

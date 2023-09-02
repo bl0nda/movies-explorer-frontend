@@ -73,7 +73,7 @@
 .login__button {
   width: 100%;
   min-height: 45px;
-  margin: 179px 0 16px;
+  margin: 0 0 16px;
   background-color: #ff6838;
   color: #ffffff;
   font-size: 14px;
@@ -101,6 +101,21 @@
   font-weight: 400;
   line-height: normal;
   padding-top: 10px;
+}
+
+.login__err-text {
+  text-align: center;
+  color: #ee3465;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  min-height: 18px;
+  height: 100%;
+  margin-top: 70px;
+  display: block;
+  flex-wrap: wrap;
+  max-width: 390px;
 }
 
 @media screen and (max-width: 450px) {

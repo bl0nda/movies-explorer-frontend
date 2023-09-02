@@ -2,7 +2,7 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import {useFormWithValidation} from '../../utils/validate';
 
-export function Login({ handleLogin }) {
+export function Login({ handleLogin, error }) {
   const { values, handleChange, errors, isValid, resetForm } =
   useFormWithValidation();
 
@@ -42,6 +42,7 @@ export function Login({ handleLogin }) {
           required
         ></input>
         <span className='login__input-error'>{errors.password}</span>
+        <p className="login__err-text">{error}</p>
         <button 
         type="submit" 
         className="login__button"

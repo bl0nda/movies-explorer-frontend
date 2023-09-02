@@ -1,16 +1,6 @@
-import { useState } from 'react';
 import './Checkbox.css';
 
 function Checkbox({isChecked, onChange}) {
-    // const [isChecked, setIsChecked] = useState(false);
-
-    // const handleChange = () => {
-    //     if (isChecked === false) {
-    //         setIsChecked(true);
-    //     } else {
-    //         setIsChecked(false);
-    //     }
-    // };
 
     return (
         <div className='checkbox'>

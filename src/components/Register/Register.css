@@ -107,10 +107,10 @@
   padding-top: 10px;
 }
 
-.form-welcome__server-error {
+.form-welcome__err-text {
     text-align: center;
     color: #ee3465;
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
