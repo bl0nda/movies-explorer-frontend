@@ -27,12 +27,19 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState(() => localStorage.getItem("searchQuery") || ""); // текст запроса
+  const [searchQueryInSaved, setSearchQueryInSaved] = useState("");
   const [searchResults, setSearchResults] = useState(JSON.parse(localStorage.getItem("searchResults")) || []); //результаты поиска
+  const [searchResultsInSaved, setSearchResultsInSaved] = useState([]);
   const [searchResultsFiltered, setSearchResultsFiltered] = useState([]); // рез-ты поиска с учетом фильтрации по короткометражкам
+  const [searchResultsFilteredInSaved, setSearchResultsFilteredInSaved] = useState([]); 
+
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchSuccess, setIsSearchSuccess] = useState(true);
 
+  const [isSearchDone, setIsSearchDone] = useState(false);
+
   const [isChecked, setIsChecked] = useState(() => JSON.parse(localStorage.getItem("checkboxState")) || false);
+  const [isCheckedInSaved, setIsCheckedInSaved] = useState(false);
 
   const [isNumberOfMoviesShown, setIsNumberOfMoviesShown] = useState(12);
   const [isNumberToAddMovies, setIsNumberToAddMovies] = useState(3);
@@ -132,10 +139,10 @@ function App() {
   const handleSearchQueryChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
-    localStorage.setItem("searchQuery", query);
+    localStorage.setItem("searchQuery", searchQuery);
   };
 
-  const handleSearch = () => {
+  function handleSearch() {
     setIsLoading(true);
     setIsSearchSuccess(false);
     setTimeout(() => {
@@ -150,11 +157,18 @@ function App() {
   };
 
   //поиск фильмов по сохраненным
-  const handleSearchInSavedMovies = () => {
+  const handleSearchQueryChangeInSaved = (event) => {
+    const query = event.target.value;
+    console.log(query);
+    setSearchQueryInSaved(query);
+  };
+
+  function handleSearchInSaved() {
     const results = savedMovies.filter((movie) =>
-      movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase())
+      movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase())
     );
-    setSearchResults(results);
+    setSearchResultsInSaved(results);
+    setIsSearchDone(true);
   };
 
   //переключение фильтрации
@@ -162,6 +176,29 @@ function App() {
     setIsChecked(!isChecked);
     localStorage.setItem("checkboxState", JSON.stringify(!isChecked));
   }
+
+  //настройка фильтра отображения короткометражек для movies
+  useEffect(() => {
+    if (isChecked) {
+      setSearchResultsFiltered(searchResults.filter((movie) => movie.duration <= 40));
+    } else {
+      setSearchResultsFiltered(searchResults);
+    }
+  }, [searchResults, isChecked]);
+
+  //переключение фильтрации на странице с сохраненными фильмами
+  const handleCheckedInSaved = () => {
+    setIsCheckedInSaved(!isCheckedInSaved);
+  }
+
+  //настройка фильтра отображения короткометражек для saved-movies
+  useEffect(() => {
+    if (isCheckedInSaved) {
+      setSearchResultsFilteredInSaved(searchResultsInSaved.filter((movie) => movie.duration <= 40));
+    } else {
+      setSearchResultsFilteredInSaved(searchResultsInSaved);
+    }
+  }, [searchResultsInSaved, isCheckedInSaved]);
 
   //установка кол-ва отображаемых карточек на странице
   useEffect(() => {
@@ -208,7 +245,7 @@ function App() {
   const handleSaveMovie = (movie) => {
     mainApi
       .SaveMovie(movie)
-      .then((res) => {
+      .then(() => {
         getSavedMovies();
       })
       .catch((err) => console.log(err));
@@ -224,14 +261,7 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  //настройка фильтра отображения короткометражек
-  useEffect(() => {
-    if (isChecked) {
-      setSearchResultsFiltered(searchResults.filter((movie) => movie.duration <= 40));
-    } else {
-      setSearchResultsFiltered(searchResults);
-    }
-  }, [searchResults, isChecked]);
+
 
   //настройка скрытия кнопки "Ещё"
   useEffect(() => {
@@ -289,7 +319,7 @@ function App() {
           <Route path="/movies" element={
             <ProtectedRouteElement
               element={Movies}
-              movies={searchResults}
+              displayedMovies={displayedMovies}
               loggedIn={loggedIn}
               onMovieSave={handleSaveMovie}
               savedMovie={savedMovies}
@@ -303,21 +333,22 @@ function App() {
               handleChecked={handleChecked}
               isMoreBtnShown={isMoreBtnShown}
               loadMore={loadMore}
-              displayedMovies={displayedMovies}
             />
           } />
           <Route path="/saved-movies" element={
             <ProtectedRouteElement
               element={SavedMovies}
-              savedMovies={savedMovies.filter((movie) => !isChecked || movie.duration <= 40)
-                .filter((movie) => !searchQuery || movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()))}
+              savedMovies={savedMovies}
               onMovieDelete={handleDeleteMovie}
               loggedIn={loggedIn}
-              isChecked={isChecked}
-              handleChecked={handleChecked}
-              handleSearch={handleSearchInSavedMovies}
-              searchQuery={searchQuery}
-              handleSearchQueryChange={handleSearchQueryChange}
+              isChecked={isCheckedInSaved}
+              handleChecked={handleCheckedInSaved}
+              handleSearch={handleSearchInSaved}
+              searchQuery={searchQueryInSaved}
+              handleSearchQueryChange={handleSearchQueryChangeInSaved}
+              searchDone={isSearchDone}
+              searchStatus={isSearchSuccess}
+              searchResults={searchResultsFilteredInSaved}
             />
           } />
           <Route path="/profile" element={
