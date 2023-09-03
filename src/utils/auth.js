@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://api.dianaks.nomoredomains.xyz";
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
