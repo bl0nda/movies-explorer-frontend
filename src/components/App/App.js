@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import './App.css';
 import Main from '../Main/Main';
 import { Login } from '../Login/Login';
@@ -194,7 +194,7 @@ function App() {
   //настройка фильтра отображения короткометражек для saved-movies
   useEffect(() => {
     if (isCheckedInSaved) {
-      setSearchResultsFilteredInSaved(searchResultsInSaved.filter((movie) => movie.duration <= 40));
+      setSearchResultsFilteredInSaved(searchResultsInSaved.filter((movie) => movie.duration <= 40) || savedMovies.filter((movie) => movie.duration <= 40));
     } else {
       setSearchResultsFilteredInSaved(searchResultsInSaved);
     }

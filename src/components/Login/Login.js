@@ -25,7 +25,7 @@ export function Login({ handleLogin, error }) {
           minLength="2"
           maxLength="30"
           placeholder="email"
-          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+"
+          pattern="^[a-zA-Z0-9]([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+){1,}\.([a-zA-Z]+)$"
           onChange={handleChange}
           required
         ></input>

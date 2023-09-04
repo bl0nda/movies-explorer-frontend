@@ -18,7 +18,7 @@ export function Profile({ loggedIn, onEditProfile, signOut, error }) {
       name: currentUser.name,
       email: currentUser.email
     });
-  }, [currentUser, setValues])
+  }, [currentUser, setValues]);
 
 
   //разблокировка полей ввода
