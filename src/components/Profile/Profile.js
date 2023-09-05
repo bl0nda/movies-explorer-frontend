@@ -18,7 +18,7 @@ export function Profile({ loggedIn, onEditProfile, signOut, error }) {
       name: currentUser.name,
       email: currentUser.email
     });
-  }, [currentUser, setValues]);
+  }, [currentUser, setValues, resetForm]);
 
 
   //разблокировка полей ввода
@@ -94,7 +94,7 @@ export function Profile({ loggedIn, onEditProfile, signOut, error }) {
               <>
                 <div className="profile__footer-save">
                   <span className={`profile__err-text ${!isValid ? "profile__err-text_active" : "profile__err-text"}`}>
-                  {error}
+                    {error}
                   </span>
                   <button
                     type="submit"

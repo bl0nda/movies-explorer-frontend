@@ -1,16 +1,15 @@
 import './Register.css';
 import { Link } from "react-router-dom";
-import {useFormWithValidation} from '../../utils/validate';
+import { useFormWithValidation } from '../../utils/validate';
 
 export function Register({ handleRegister, error }) {
   const { values, handleChange, errors, isValid, resetForm } =
-  useFormWithValidation();
+    useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleRegister(values.name, values.email, values.password);
     resetForm();
-    console.log(values.name, values.email);
   };
 
   return (
@@ -60,10 +59,10 @@ export function Register({ handleRegister, error }) {
         ></input>
         <span className='form-welcome__input-error form-welcome__input-error_type_password'>{errors.password}</span>
         <p className="form-welcome__err-text">{error}</p>
-        <button 
-        type="submit" 
-        className="form-welcome__button"
-        disabled={!isValid}>
+        <button
+          type="submit"
+          className="form-welcome__button"
+          disabled={!isValid}>
           Зарегистрироваться
         </button>
         <p className="form-welcome__link-text">Уже зарегистрированы? <Link className="form-welcome__link" to="/signin">Войти</Link></p>

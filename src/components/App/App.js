@@ -31,12 +31,10 @@ function App() {
   const [searchResults, setSearchResults] = useState(JSON.parse(localStorage.getItem("searchResults")) || []); //результаты поиска
   const [searchResultsInSaved, setSearchResultsInSaved] = useState([]);
   const [searchResultsFiltered, setSearchResultsFiltered] = useState([]); // рез-ты поиска с учетом фильтрации по короткометражкам
-  const [searchResultsFilteredInSaved, setSearchResultsFilteredInSaved] = useState([]); 
+  const [searchResultsFilteredInSaved, setSearchResultsFilteredInSaved] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchSuccess, setIsSearchSuccess] = useState(true);
-
-  const [isSearchDone, setIsSearchDone] = useState(false);
 
   const [isChecked, setIsChecked] = useState(() => JSON.parse(localStorage.getItem("checkboxState")) || false);
   const [isCheckedInSaved, setIsCheckedInSaved] = useState(false);
@@ -110,7 +108,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [loggedIn]);
 
   // получение списка сохраненных фильмов
   const getSavedMovies = () => {
@@ -163,12 +161,27 @@ function App() {
     setSearchQueryInSaved(query);
   };
 
+  useEffect(() => {
+    const results = savedMovies.filter((movie) => isChecked ? movie.duration <= 40 : true)
+      .filter((movie) =>
+        movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase()) 
+        || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase()));
+        setSearchResultsInSaved(results);
+  }, [isChecked, searchQueryInSaved, savedMovies])
+
+// function filterInSaved() {
+//   const results = savedMovies.filter((movie) => isChecked ? movie.duration <= 40 : true)
+//       .filter((movie) =>
+//         movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase()) 
+//         || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase()));
+//         setSearchResultsInSaved(results);
+// }
+
   function handleSearchInSaved() {
     const results = savedMovies.filter((movie) =>
       movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase())
     );
     setSearchResultsInSaved(results);
-    setIsSearchDone(true);
   };
 
   //переключение фильтрации
@@ -346,7 +359,6 @@ function App() {
               handleSearch={handleSearchInSaved}
               searchQuery={searchQueryInSaved}
               handleSearchQueryChange={handleSearchQueryChangeInSaved}
-              searchDone={isSearchDone}
               searchStatus={isSearchSuccess}
               searchResults={searchResultsFilteredInSaved}
             />

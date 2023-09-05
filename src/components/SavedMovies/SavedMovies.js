@@ -12,7 +12,6 @@ function SavedMovies({
     handleSearch,
     searchQuery,
     handleSearchQueryChange,
-    searchDone,
     searchResults }) {
 
     return (
@@ -21,16 +20,16 @@ function SavedMovies({
             <main className='movies'>
                 <SearchForm onChange={handleSearchQueryChange} searchQuery={searchQuery} handleSearch={handleSearch}
                     isChecked={isChecked} onCheckboxUpdated={handleChecked} />
-                {!searchDone ? (
+                {/* {!searchDone ? (
                     <>
                         <MoviesCardList movies={savedMovies} savedMovie={savedMovies} onMovieDelete={onMovieDelete} />
                     </>
-                ) : (
-                    <>
+                ) : ( */}
+                    {/* <> */}
                         <MoviesCardList movies={searchResults} savedMovie={savedMovies} onMovieDelete={onMovieDelete} />
-                    </>
+                    {/* </>
                 )
-                }
+                } */}
             </main>
             <Footer />
         </>
