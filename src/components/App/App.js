@@ -32,6 +32,7 @@ function App() {
   const [searchResultsInSaved, setSearchResultsInSaved] = useState([]);
   const [searchResultsFiltered, setSearchResultsFiltered] = useState([]); // рез-ты поиска с учетом фильтрации по короткометражкам
   const [searchResultsFilteredInSaved, setSearchResultsFilteredInSaved] = useState([]);
+  const [isSearchDoneInSaved, setIsSearchDoneInSaved] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchSuccess, setIsSearchSuccess] = useState(true);
@@ -161,30 +162,17 @@ function App() {
     setSearchQueryInSaved(query);
   };
 
-  useEffect(() => {
-    const results = savedMovies.filter((movie) => isChecked ? movie.duration <= 40 : true)
-      .filter((movie) =>
-        movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase()) 
-        || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase()));
-        setSearchResultsInSaved(results);
-  }, [isChecked, searchQueryInSaved, savedMovies])
-
-// function filterInSaved() {
-//   const results = savedMovies.filter((movie) => isChecked ? movie.duration <= 40 : true)
-//       .filter((movie) =>
-//         movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase()) 
-//         || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase()));
-//         setSearchResultsInSaved(results);
-// }
-
   function handleSearchInSaved() {
+    setIsSearchSuccess(false);
     const results = savedMovies.filter((movie) =>
       movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase())
     );
     setSearchResultsInSaved(results);
+    setIsSearchDoneInSaved(true);
+    setIsSearchSuccess(results.length > 0);
   };
 
-  //переключение фильтрации
+  //переключение фильтрации для movies
   const handleChecked = () => {
     setIsChecked(!isChecked);
     localStorage.setItem("checkboxState", JSON.stringify(!isChecked));
@@ -199,19 +187,37 @@ function App() {
     }
   }, [searchResults, isChecked]);
 
-  //переключение фильтрации на странице с сохраненными фильмами
+  //переключение фильтрации для saved-movies
   const handleCheckedInSaved = () => {
     setIsCheckedInSaved(!isCheckedInSaved);
   }
 
   //настройка фильтра отображения короткометражек для saved-movies
   useEffect(() => {
-    if (isCheckedInSaved) {
-      setSearchResultsFilteredInSaved(searchResultsInSaved.filter((movie) => movie.duration <= 40) || savedMovies.filter((movie) => movie.duration <= 40));
+    if (!isSearchDoneInSaved) {
+      if (isCheckedInSaved) {
+        setSearchResultsFilteredInSaved(savedMovies.filter((movie) => movie.duration <= 40) || savedMovies.filter((movie) => movie.duration <= 40));
+      } else {
+        setSearchResultsFilteredInSaved(savedMovies);
+      }
     } else {
-      setSearchResultsFilteredInSaved(searchResultsInSaved);
+      if (isCheckedInSaved) {
+        setSearchResultsFilteredInSaved(searchResultsInSaved.filter((movie) => movie.duration <= 40) || savedMovies.filter((movie) => movie.duration <= 40));
+      } else {
+        setSearchResultsFilteredInSaved(searchResultsInSaved);
+      }
     }
-  }, [searchResultsInSaved, isCheckedInSaved]);
+  }, [savedMovies, searchResultsInSaved, isCheckedInSaved]);
+
+
+  // useEffect(() => {
+  //   const results = savedMovies.filter((movie) => isCheckedInSaved ? movie.duration <= 40 : true)
+  //     .filter((movie) =>
+  //       movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase())
+  //       || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase()));
+  //   setSearchResultsInSaved(results);
+  //   // setIsSearchSuccess(results.length > 0);
+  // }, [isChecked, searchQueryInSaved, savedMovies])
 
   //установка кол-ва отображаемых карточек на странице
   useEffect(() => {
@@ -258,8 +264,11 @@ function App() {
   const handleSaveMovie = (movie) => {
     mainApi
       .SaveMovie(movie)
-      .then(() => {
+      .then((res) => {
         getSavedMovies();
+        // console.log(res);
+        // savedMovies.push(res);
+        // console.log(savedMovies);
       })
       .catch((err) => console.log(err));
   }

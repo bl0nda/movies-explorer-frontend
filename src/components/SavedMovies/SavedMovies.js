@@ -2,6 +2,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import './SavedMovies.css';
 
 function SavedMovies({
     savedMovies,
@@ -12,7 +13,8 @@ function SavedMovies({
     handleSearch,
     searchQuery,
     handleSearchQueryChange,
-    searchResults }) {
+    searchResults,
+    searchStatus }) {
 
     return (
         <>
@@ -20,16 +22,11 @@ function SavedMovies({
             <main className='movies'>
                 <SearchForm onChange={handleSearchQueryChange} searchQuery={searchQuery} handleSearch={handleSearch}
                     isChecked={isChecked} onCheckboxUpdated={handleChecked} />
-                {/* {!searchDone ? (
-                    <>
-                        <MoviesCardList movies={savedMovies} savedMovie={savedMovies} onMovieDelete={onMovieDelete} />
-                    </>
-                ) : ( */}
-                    {/* <> */}
-                        <MoviesCardList movies={searchResults} savedMovie={savedMovies} onMovieDelete={onMovieDelete} />
-                    {/* </>
-                )
-                } */}
+                {searchStatus ?
+                    <MoviesCardList movies={searchResults} savedMovie={savedMovies} onMovieDelete={onMovieDelete} />
+                    : <p className='movies__not-found'>Ничего не найдено</p>
+                }
+
             </main>
             <Footer />
         </>
