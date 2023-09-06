@@ -26,24 +26,6 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
 
-  const [searchQuery, setSearchQuery] = useState(() => localStorage.getItem("searchQuery") || ""); // текст запроса
-  const [searchQueryInSaved, setSearchQueryInSaved] = useState("");
-  const [searchResults, setSearchResults] = useState(JSON.parse(localStorage.getItem("searchResults")) || []); //результаты поиска
-  const [searchResultsInSaved, setSearchResultsInSaved] = useState([]);
-  const [searchResultsFiltered, setSearchResultsFiltered] = useState([]); // рез-ты поиска с учетом фильтрации по короткометражкам
-  const [searchResultsFilteredInSaved, setSearchResultsFilteredInSaved] = useState([]);
-  const [isSearchDoneInSaved, setIsSearchDoneInSaved] = useState(false);
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSearchSuccess, setIsSearchSuccess] = useState(true);
-
-  const [isChecked, setIsChecked] = useState(() => JSON.parse(localStorage.getItem("checkboxState")) || false);
-  const [isCheckedInSaved, setIsCheckedInSaved] = useState(false);
-
-  const [isNumberOfMoviesShown, setIsNumberOfMoviesShown] = useState(12);
-  const [isNumberToAddMovies, setIsNumberToAddMovies] = useState(3);
-  const [isMoreBtnShown, setIsMoreBtnShown] = useState(true);
-
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
   const [statusInfoTooltip, setStatusInfoTooltip] = useState(false);
 
@@ -134,132 +116,6 @@ function App() {
     }
   }, [loggedIn]);
 
-  //поиск фильмов
-  const handleSearchQueryChange = (event) => {
-    const query = event.target.value;
-    setSearchQuery(query);
-    localStorage.setItem("searchQuery", searchQuery);
-  };
-
-  function handleSearch() {
-    setIsLoading(true);
-    setIsSearchSuccess(false);
-    setTimeout(() => {
-      const results = movies.filter((movie) =>
-        movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setSearchResults(results);
-      localStorage.setItem("searchResults", JSON.stringify(results));
-      setIsSearchSuccess(results.length > 0);
-      setIsLoading(false);
-    }, 2000);
-  };
-
-  //поиск фильмов по сохраненным
-  const handleSearchQueryChangeInSaved = (event) => {
-    const query = event.target.value;
-    console.log(query);
-    setSearchQueryInSaved(query);
-  };
-
-  function handleSearchInSaved() {
-    setIsSearchSuccess(false);
-    const results = savedMovies.filter((movie) =>
-      movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase())
-    );
-    setSearchResultsInSaved(results);
-    setIsSearchDoneInSaved(true);
-    setIsSearchSuccess(results.length > 0);
-  };
-
-  //переключение фильтрации для movies
-  const handleChecked = () => {
-    setIsChecked(!isChecked);
-    localStorage.setItem("checkboxState", JSON.stringify(!isChecked));
-  }
-
-  //настройка фильтра отображения короткометражек для movies
-  useEffect(() => {
-    if (isChecked) {
-      setSearchResultsFiltered(searchResults.filter((movie) => movie.duration <= 40));
-    } else {
-      setSearchResultsFiltered(searchResults);
-    }
-  }, [searchResults, isChecked]);
-
-  //переключение фильтрации для saved-movies
-  const handleCheckedInSaved = () => {
-    setIsCheckedInSaved(!isCheckedInSaved);
-  }
-
-  //настройка фильтра отображения короткометражек для saved-movies
-  useEffect(() => {
-    if (!isSearchDoneInSaved) {
-      if (isCheckedInSaved) {
-        setSearchResultsFilteredInSaved(savedMovies.filter((movie) => movie.duration <= 40) || savedMovies.filter((movie) => movie.duration <= 40));
-      } else {
-        setSearchResultsFilteredInSaved(savedMovies);
-      }
-    } else {
-      if (isCheckedInSaved) {
-        setSearchResultsFilteredInSaved(searchResultsInSaved.filter((movie) => movie.duration <= 40) || savedMovies.filter((movie) => movie.duration <= 40));
-      } else {
-        setSearchResultsFilteredInSaved(searchResultsInSaved);
-      }
-    }
-  }, [savedMovies, searchResultsInSaved, isCheckedInSaved]);
-
-
-  // useEffect(() => {
-  //   const results = savedMovies.filter((movie) => isCheckedInSaved ? movie.duration <= 40 : true)
-  //     .filter((movie) =>
-  //       movie.nameRU.toLowerCase().includes(searchQueryInSaved.toLowerCase())
-  //       || movie.nameEN.toLowerCase().includes(searchQueryInSaved.toLowerCase()));
-  //   setSearchResultsInSaved(results);
-  //   // setIsSearchSuccess(results.length > 0);
-  // }, [isChecked, searchQueryInSaved, savedMovies])
-
-  //установка кол-ва отображаемых карточек на странице
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 805) {
-        setIsNumberOfMoviesShown(12);
-        setIsNumberToAddMovies(3);
-      } else if (window.innerWidth > 450 && window.innerWidth <= 805) {
-        setIsNumberOfMoviesShown(8);
-        setIsNumberToAddMovies(2);
-      } else if (window.innerWidth <= 450) {
-        setIsNumberOfMoviesShown(5);
-        setIsNumberToAddMovies(2);
-      }
-    };
-
-    handleResize();
-
-    setTimeout(() => {
-      window.addEventListener('resize', handleResize);
-    }, 2000);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  //кнопка "показать ещё"
-  const handleChangeMoreBtn = () => {
-    if (searchResults.length > isNumberOfMoviesShown) {
-      setIsMoreBtnShown(true);
-    } else {
-      setIsMoreBtnShown(false);
-    }
-  };
-
-  const loadMore = () => {
-    setIsNumberOfMoviesShown(isNumberOfMoviesShown + isNumberToAddMovies);
-  };
-
-  const displayedMovies = searchResultsFiltered.slice(0, isNumberOfMoviesShown);
-
   // сохранение фильма
   const handleSaveMovie = (movie) => {
     mainApi
@@ -282,13 +138,6 @@ function App() {
       })
       .catch((err) => console.log(err));
   }
-
-
-
-  //настройка скрытия кнопки "Ещё"
-  useEffect(() => {
-    handleChangeMoreBtn();
-  }, [loadMore, handleSearch]);
 
   //редактирование профиля
   function editProfileData(data) {
@@ -341,35 +190,20 @@ function App() {
           <Route path="/movies" element={
             <ProtectedRouteElement
               element={Movies}
-              displayedMovies={displayedMovies}
+              movies={movies}
               loggedIn={loggedIn}
               onMovieSave={handleSaveMovie}
               savedMovie={savedMovies}
               onMovieDelete={handleDeleteMovie}
-              isLoading={isLoading}
-              handleSearch={handleSearch}
-              searchStatus={isSearchSuccess}
-              searchQuery={searchQuery}
-              handleSearchQueryChange={handleSearchQueryChange}
-              isChecked={isChecked}
-              handleChecked={handleChecked}
-              isMoreBtnShown={isMoreBtnShown}
-              loadMore={loadMore}
             />
           } />
           <Route path="/saved-movies" element={
             <ProtectedRouteElement
               element={SavedMovies}
+              movies={movies}
               savedMovies={savedMovies}
               onMovieDelete={handleDeleteMovie}
               loggedIn={loggedIn}
-              isChecked={isCheckedInSaved}
-              handleChecked={handleCheckedInSaved}
-              handleSearch={handleSearchInSaved}
-              searchQuery={searchQueryInSaved}
-              handleSearchQueryChange={handleSearchQueryChangeInSaved}
-              searchStatus={isSearchSuccess}
-              searchResults={searchResultsFilteredInSaved}
             />
           } />
           <Route path="/profile" element={
