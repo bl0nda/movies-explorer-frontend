@@ -57,6 +57,7 @@ export function Profile({ loggedIn, onEditProfile, signOut, error }) {
               value={values.name}
               placeholder="Имя"
               onChange={handleChange}
+              pattern='^[a-zA-Zа-яА-я\-]*$'
               required
               disabled={isDisabledInput}
             ></input>
@@ -72,6 +73,7 @@ export function Profile({ loggedIn, onEditProfile, signOut, error }) {
               value={values.email}
               placeholder="email"
               onChange={handleChange}
+              pattern="^[a-zA-Z0-9]([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+){1,}\.([a-zA-Z]+)$"
               required
               disabled={isDisabledInput}
             ></input>
