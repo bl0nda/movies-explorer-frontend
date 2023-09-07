@@ -1,3 +1,5 @@
 const movieURL = 'https://api.nomoreparties.co';
 
-export {movieURL};
+const shortMoviesDuration = 40;
+
+export { movieURL, shortMoviesDuration };

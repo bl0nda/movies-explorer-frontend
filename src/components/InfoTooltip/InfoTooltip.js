@@ -10,7 +10,7 @@ function InfoTooltip(props) {
         "popup popup_type_info" + (props.isOpen ? " popup_opened" : "")
       }
     >
-        <div className="popup__container">
+      <div className="popup__container">
         <button
           type="button"
           className="popup__close-button"
@@ -18,7 +18,7 @@ function InfoTooltip(props) {
         ></button>
         <img src={props.status ? success : fail} alt={props.status ? "Данные изменены" : "Что-то пошло не так"} className="popup__icon-reg" />
         <h2 className="popup__text-reg">{props.status ? "Данные успешно отредактированы!" : "Что-то пошло не так! Попробуйте ещё раз."}</h2>
-        </div>
+      </div>
     </section>
   );
 }

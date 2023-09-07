@@ -11,7 +11,7 @@
   background-image: url(../../images/logo_header.svg);
   background-size: cover;
   background-position: center;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .login__logo:hover {
@@ -89,8 +89,8 @@
 }
 
 .login__button:disabled {
-  background: #F8F8F8;
-  color: #C2C2C2;
+  background: #f8f8f8;
+  color: #c2c2c2;
   cursor: auto;
   opacity: 1;
 }

@@ -126,7 +126,6 @@
   .about-project__duration-container {
     padding-bottom: 85px;
   }
-  
 }
 
 @media screen and (max-width: 450px) {
@@ -180,7 +179,7 @@
   .about-project__item-duration {
     font-size: 11px;
   }
-  
+
   .about-project__duration-container {
     padding-bottom: 62px;
   }

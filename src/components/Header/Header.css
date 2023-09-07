@@ -14,7 +14,7 @@
   background-image: url(../../images/logo_header.svg);
   background-size: cover;
   background-position: center;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .header__logo-link:hover {
@@ -34,18 +34,18 @@
   font-weight: 500;
   text-decoration: none;
   color: #fff;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .header__main-link_active {
-    color: #000;
-    width: 76px;
-    height: 32px;
-    border-radius: 3px;
-    background: #2be080;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: #000;
+  width: 76px;
+  height: 32px;
+  border-radius: 3px;
+  background: #2be080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header__link:hover {
@@ -87,5 +87,5 @@
   .header__main-link_active {
     width: 54px;
     height: 26px;
-}
+  }
 }

@@ -6,7 +6,7 @@ import Techs from "../Techs/Techs";
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function Main({loggedIn}) {
+function Main({ loggedIn }) {
     return (
         <>
             <Header loggedIn={loggedIn} />

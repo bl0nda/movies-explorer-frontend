@@ -6,6 +6,7 @@ import MoreButton from '../MoreButton/MoreButton';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
+import { shortMoviesDuration } from '../../utils/constants';
 
 
 function Movies({
@@ -59,37 +60,37 @@ function Movies({
     //настройка фильтра отображения короткометражек для movies
     useEffect(() => {
         if (isChecked) {
-            setSearchResultsFiltered(searchResults.filter((movie) => movie.duration <= 40));
+            setSearchResultsFiltered(searchResults.filter((movie) => movie.duration <= shortMoviesDuration));
         } else {
             setSearchResultsFiltered(searchResults);
         }
     }, [searchResults, isChecked]);
 
-//установка кол-ва отображаемых карточек на странице
-useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 805) {
-        setIsNumberOfMoviesShown(12);
-        setIsNumberToAddMovies(3);
-      } else if (window.innerWidth > 450 && window.innerWidth <= 805) {
-        setIsNumberOfMoviesShown(8);
-        setIsNumberToAddMovies(2);
-      } else if (window.innerWidth <= 450) {
-        setIsNumberOfMoviesShown(5);
-        setIsNumberToAddMovies(2);
-      }
-    };
+    //установка кол-ва отображаемых карточек на странице
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 805) {
+                setIsNumberOfMoviesShown(12);
+                setIsNumberToAddMovies(3);
+            } else if (window.innerWidth > 450 && window.innerWidth <= 805) {
+                setIsNumberOfMoviesShown(8);
+                setIsNumberToAddMovies(2);
+            } else if (window.innerWidth <= 450) {
+                setIsNumberOfMoviesShown(5);
+                setIsNumberToAddMovies(2);
+            }
+        };
 
-    handleResize();
+        handleResize();
 
-    setTimeout(() => {
-      window.addEventListener('resize', handleResize);
-    }, 2000);
+        setTimeout(() => {
+            window.addEventListener('resize', handleResize);
+        }, 2000);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     //кнопка "показать ещё"
     const handleChangeMoreBtn = () => {

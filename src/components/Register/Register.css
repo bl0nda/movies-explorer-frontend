@@ -11,7 +11,7 @@
   background-image: url(../../images/logo_header.svg);
   background-size: cover;
   background-position: center;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .form-welcome__logo:hover {
@@ -67,7 +67,7 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: none;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .form-welcome__link:hover {
@@ -82,7 +82,7 @@
   color: #ffffff;
   font-size: 14px;
   line-height: normal;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   cursor: pointer;
   border: none;
   border-radius: 3px;
@@ -93,8 +93,8 @@
 }
 
 .form-welcome__button:disabled {
-  background: #F8F8F8;
-  color: #C2C2C2;
+  background: #f8f8f8;
+  color: #c2c2c2;
   cursor: auto;
   opacity: 1;
 }
@@ -108,18 +108,18 @@
 }
 
 .form-welcome__err-text {
-    text-align: center;
-    color: #ee3465;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    min-height: 18px;
-    height: 100%;
-    margin-top: 70px;
-    display: block;
-    flex-wrap: wrap;
-    max-width: 390px;
+  text-align: center;
+  color: #ee3465;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  min-height: 18px;
+  height: 100%;
+  margin-top: 70px;
+  display: block;
+  flex-wrap: wrap;
+  max-width: 390px;
 }
 
 @media screen and (max-width: 450px) {

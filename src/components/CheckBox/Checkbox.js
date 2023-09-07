@@ -1,6 +1,6 @@
 import './Checkbox.css';
 
-function Checkbox({isChecked, onChange}) {
+function Checkbox({ isChecked, onChange }) {
 
     return (
         <div className='checkbox'>

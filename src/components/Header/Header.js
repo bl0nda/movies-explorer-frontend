@@ -4,13 +4,13 @@ import './Header.css';
 import Navigation from "../Navigation/Navigation";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-function Header({loggedIn}) {
+function Header({ loggedIn }) {
 
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
   const toggleBurgerMenu = () => {
-    if(isBurgerMenuOpen === false) {
-    setIsBurgerMenuOpen(true);
+    if (isBurgerMenuOpen === false) {
+      setIsBurgerMenuOpen(true);
     } else {
       setIsBurgerMenuOpen(false);
     }
@@ -33,7 +33,7 @@ function Header({loggedIn}) {
               <BurgerMenu
                 isOpen={isBurgerMenuOpen}
                 onClick={toggleBurgerMenu} />
-              <Navigation isOpen={isBurgerMenuOpen}/>
+              <Navigation isOpen={isBurgerMenuOpen} />
             </div>
           )
         }
