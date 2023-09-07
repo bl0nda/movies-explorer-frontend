@@ -26,13 +26,6 @@ class MainApi {
     }).then(this._getResult);
   }
 
-  // getProfileData() {
-  //   return fetch(`${this._url}/profile`, {
-  //     method: "GET",
-  //     headers: this._headers,
-  //   }).then(this._getResult);
-  // }
-
   SaveMovie(data) {
     const token = localStorage.getItem('token');
     return fetch(`${this._url}/movies`, {
@@ -69,7 +62,6 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  // baseUrl: "http://localhost:3000",
   baseUrl: "https://api.dianaks.nomoredomains.xyz",
   headers: {
     "content-type": "application/json",

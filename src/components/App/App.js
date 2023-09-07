@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import './App.css';
 import Main from '../Main/Main';
 import { Login } from '../Login/Login';
@@ -17,6 +17,7 @@ import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [currentUser, setCurrentUser] = useState({
     name: "",
     email: "",
@@ -80,7 +81,7 @@ function App() {
           if (res) {
             setCurrentUser(res);
             setLoggedIn(true);
-            navigate("/movies", { replace: true });
+            navigate(location.pathname, { replace: true });
           } else {
             setLoggedIn(false);
           }
@@ -121,27 +122,28 @@ function App() {
     mainApi
       .SaveMovie(movie)
       .then((res) => {
-        getSavedMovies();
-        // console.log(res);
-        // savedMovies.push(res);
-        // console.log(savedMovies);
+        const updatedSavedMovies = [...savedMovies, { ...res, id: res.movieId }];
+        setSavedMovies(updatedSavedMovies);
       })
       .catch((err) => console.log(err));
   }
 
   //удаление фильма
   const handleDeleteMovie = (movie) => {
+    const id = movie.movieId || movie.id;
     mainApi
-      .deleteSavedMovie(movie.movieId || movie.id)
+      .deleteSavedMovie(id)
       .then(() => {
-        getSavedMovies();
+        const updatedSavedMovies = savedMovies.filter(m => m.movieId !== id);
+        setSavedMovies(updatedSavedMovies);
+        console.log(updatedSavedMovies);
       })
       .catch((err) => console.log(err));
   }
 
   //редактирование профиля
   function editProfileData(data) {
-    mainApi
+    return mainApi
       .editProfile(data)
       .then((res) => {
         setCurrentUser(res);
@@ -153,6 +155,7 @@ function App() {
           setError("При обновлении профиля произошла ошибка.");
         }
         setStatusInfoTooltip(false);
+        return err;
       })
       .finally(() => {
         setIsInfoTooltipPopupOpen(true);
@@ -161,12 +164,12 @@ function App() {
 
   //выход из аккаунта
   function signOut() {
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-    setCurrentUser({});
     localStorage.removeItem("searchResults");
     localStorage.removeItem("checkboxState");
     localStorage.removeItem("searchQuery");
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+    setCurrentUser({});
     navigate("/");
   }
 
@@ -181,12 +184,13 @@ function App() {
           <Route path="/" element={<Main loggedIn={loggedIn} />} />
           <Route
             path="/signup"
-            element={<Register handleRegister={handleRegister} error={error} />}
+            element={<Register handleRegister={handleRegister} error={error} setError={setError} />}
           />
           <Route
             path="/signin"
-            element={<Login handleLogin={handleLogin} error={error} />}
+            element={<Login handleLogin={handleLogin} error={error} setError={setError} />}
           />
+          <Route path="*" element={<Page404 />} />
           <Route path="/movies" element={
             <ProtectedRouteElement
               element={Movies}
@@ -215,7 +219,6 @@ function App() {
               error={error}
             />
           } />
-          <Route path="*" element={<Page404 />} />
         </Routes>
         <InfoTooltip
           isOpen={isInfoTooltipPopupOpen}

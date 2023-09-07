@@ -1,5 +1,4 @@
 export const BASE_URL = "https://api.dianaks.nomoredomains.xyz";
-// export const BASE_URL = "http://localhost:3000";
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -21,7 +20,7 @@ export const authorize = (email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res)=>getResponse(res))
+  }).then((res) => getResponse(res))
 };
 
 export const getContent = (token) => {
@@ -33,7 +32,7 @@ export const getContent = (token) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((res)=>getResponse(res))
+    .then((res) => getResponse(res))
 };
 
 function getResponse(res) {

@@ -36,9 +36,15 @@ export function Profile({ loggedIn, onEditProfile, signOut, error }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid) {
-      onEditProfile({ name: values.name, email: values.email });
+      setIsModifiedData(false);
+      onEditProfile({ name: values.name, email: values.email })
+        .then((err) => {
+          if (!err) {
+            setIsDisabledInput(true)
+          }
+        })
+        .finally(() => setIsModifiedData(true));
     }
-    setIsDisabledInput(true);
   };
 
   return (

@@ -1,8 +1,9 @@
 import './Register.css';
 import { Link } from "react-router-dom";
 import { useFormWithValidation } from '../../utils/validate';
+import { useEffect } from 'react';
 
-export function Register({ handleRegister, error }) {
+export function Register({ handleRegister, error, setError }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
 
@@ -11,6 +12,8 @@ export function Register({ handleRegister, error }) {
     handleRegister(values.name, values.email, values.password);
     resetForm();
   };
+
+  useEffect(() => setError(""), []);
 
   return (
     <section className="main">

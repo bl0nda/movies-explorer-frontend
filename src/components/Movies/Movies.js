@@ -34,7 +34,7 @@ function Movies({
     const handleSearchQueryChange = (event) => {
         const query = event.target.value;
         setSearchQuery(query);
-        localStorage.setItem("searchQuery", searchQuery);
+        localStorage.setItem("searchQuery", query);
     };
 
     function handleSearch() {
