@@ -1,12 +1,9 @@
-Макет: light-5
+# Дипломная работа movies-explorer-frontend 
 
-## ссылка на пул-реквест
-https://github.com/bl0nda/movies-explorer-frontend/pull/2
+## Адрес репозитория:
+[https://github.com/bl0nda/movies-explorer-frontend](https://github.com/bl0nda/movies-explorer-frontend)
 
-## Ссылки на проект
-
-IP 62.84.119.97
-
-Frontend https://dianaks.nomoredomains.xyz
-
+## Публичный сервер
+[dianaks.nomoredomains.xyz](https://dianaks.nomoredomains.xyz)
+IP: 62.84.119.97
 Backend https://api.dianaks.nomoredomains.xyz
