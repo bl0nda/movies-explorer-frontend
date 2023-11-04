@@ -62,7 +62,8 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: "https://api.dianaks.nomoredomains.xyz",
+  // baseUrl: "https://api.dianaks.nomoredomains.xyz",
+  baseUrl: "http://localhost:3000",
   headers: {
     "content-type": "application/json",
   },
