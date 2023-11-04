@@ -1,26 +1,19 @@
 import './Register.css';
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useFormWithValidation } from '../../utils/validate';
+import { useEffect } from 'react';
 
-export function Register({ handleRegister }) {
-  const [formValue, setFormValue] = useState({
-    name: "Виталий",
-    email: "pochta@yandex.ru",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValue({
-      ...formValue,
-      [name]: value,
-    });
-  };
+export function Register({ handleRegister, error, setError }) {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegister(formValue.name, formValue.email, formValue.password);
+    handleRegister(values.name, values.email, values.password);
+    resetForm();
   };
+
+  useEffect(() => setError(""), []);
 
   return (
     <section className="main">
@@ -35,11 +28,12 @@ export function Register({ handleRegister }) {
           minLength="2"
           maxLength="40"
           placeholder='Имя'
-          value={formValue.name}
+          pattern='^[a-zA-Zа-яА-я\-]*$'
+          value={values.name}
           onChange={handleChange}
           required
         ></input>
-        <span className='form-welcome__input-error form-welcome__input-error_type_name'>Что-то пошло не так...</span>
+        <span className='form-welcome__input-error'>{errors.name}</span>
         <label className="form-welcome__input-label">E-mail</label>
         <input
           type="email"
@@ -48,11 +42,12 @@ export function Register({ handleRegister }) {
           minLength="2"
           maxLength="30"
           placeholder='email'
-          value={formValue.email}
+          pattern="^[a-zA-Z0-9]([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+){1,}\.([a-zA-Z]+)$"
+          value={values.email}
           onChange={handleChange}
           required
         ></input>
-        <span className='form-welcome__input-error form-welcome__input-error_type_email'>Что-то пошло не так...</span>
+        <span className='form-welcome__input-error'>{errors.email}</span>
         <label className="form-welcome__input-label">Пароль</label>
         <input
           type="password"
@@ -61,12 +56,16 @@ export function Register({ handleRegister }) {
           minLength="8"
           maxLength="30"
           placeholder="Пароль"
-          value={formValue.password}
+          value={values.password}
           onChange={handleChange}
           required
         ></input>
-        <span className='form-welcome__input-error form-welcome__input-error_type_password'>Что-то пошло не так...</span>
-        <button type="submit" className="form-welcome__button">
+        <span className='form-welcome__input-error form-welcome__input-error_type_password'>{errors.password}</span>
+        <p className="form-welcome__err-text">{error}</p>
+        <button
+          type="submit"
+          className="form-welcome__button"
+          disabled={!isValid}>
           Зарегистрироваться
         </button>
         <p className="form-welcome__link-text">Уже зарегистрированы? <Link className="form-welcome__link" to="/signin">Войти</Link></p>

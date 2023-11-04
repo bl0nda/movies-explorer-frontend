@@ -4,7 +4,7 @@
   min-height: 172px;
   display: flex;
   flex-direction: column;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .footer__bottom-container {
@@ -40,7 +40,7 @@
   line-height: normal;
   text-decoration: none;
   color: #000;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .footer__link:hover {
@@ -76,7 +76,7 @@
 
   .footer__year {
     font-size: 12px;
-    color: #A0A0A0;
+    color: #a0a0a0;
   }
 
   .footer__links {

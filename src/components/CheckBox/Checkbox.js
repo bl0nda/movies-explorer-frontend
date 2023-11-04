@@ -1,16 +1,6 @@
-import { useState } from 'react';
 import './Checkbox.css';
 
-function Checkbox() {
-    const [isChecked, setIsChecked] = useState(false);
-
-    const handleChange = () => {
-        if (isChecked === false) {
-            setIsChecked(true);
-        } else {
-            setIsChecked(false);
-        }
-    };
+function Checkbox({ isChecked, onChange }) {
 
     return (
         <div className='checkbox'>
@@ -20,7 +10,7 @@ function Checkbox() {
                     name="movie-filter-checkbox"
                     className='checkbox__element'
                     checked={isChecked}
-                    onChange={handleChange}
+                    onChange={onChange}
                 />
                 <span className="checkbox__visible"></span>
             </label>

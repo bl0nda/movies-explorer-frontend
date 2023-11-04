@@ -21,12 +21,12 @@
 }
 
 .portfolio__item {
- border-bottom: 1px #E8E8E8 solid;
+  border-bottom: 1px #e8e8e8 solid;
 }
 
 .portfolio__item:last-child {
   border-bottom: none;
- }
+}
 
 .portfolio__link {
   display: flex;
@@ -34,7 +34,7 @@
   align-items: flex-start;
   text-decoration: none;
   color: #000;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .portfolio__link:hover {
@@ -72,7 +72,7 @@
     line-height: 1.79;
     letter-spacing: -1.12px;
   }
-  
+
   .portfolio__link-icon {
     width: 27px;
     height: 60px;
@@ -101,7 +101,7 @@
     line-height: 1.55;
     letter-spacing: -0.72px;
   }
-  
+
   .portfolio__link-icon {
     width: 18px;
     height: 28px;

@@ -1,9 +1,9 @@
 import './Page404.css';
 import { useNavigate } from "react-router-dom";
 
-function Page404 () {
+function Page404() {
     const navigate = useNavigate();
-    
+
     function goBack() {
         navigate(-1);
     }

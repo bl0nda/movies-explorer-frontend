@@ -30,7 +30,7 @@
   border-radius: 34px;
   background: #343434;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .checkbox__visible::before {
@@ -43,7 +43,7 @@
   height: 10px;
   border-radius: 50%;
   background: #a0a0a0;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .checkbox__text {

@@ -46,22 +46,29 @@
   background-position: center;
 }
 
-.promo__btn {
+.promo__link {
   width: 129px;
   height: 36px;
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.promo__link-text {
   color: #fff;
   font-size: 12px;
   font-weight: 500;
   font-style: normal;
   line-height: 1.33;
-  cursor: pointer;
-  transition: opacity .3s ease-in-out;
 }
 
-.promo__btn:hover {
+.promo__link:hover {
   opacity: 0.7;
 }
 
